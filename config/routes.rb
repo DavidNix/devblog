@@ -4,7 +4,13 @@ Devblog::Application.routes.draw do
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
-  devise_for :admins
+  devise_for :admins, controllers: { registrations: "admin_registrations" }
+
+  devise_scope :admin do
+    get "admin", to: "devise/sessions#new"
+  end
+
+  resources :posts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
