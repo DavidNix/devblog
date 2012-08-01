@@ -25,6 +25,9 @@ end
 
 group :development, :test do
 	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+	gem 'debugger'
+	gem 'guard-rspec'
 end
 
 group :development do
@@ -32,8 +35,11 @@ group :development do
 end
 
 group :test do
+	gem 'faker'
 	gem 'capybara'
 	gem 'factory_girl_rails'
+	gem 'launchy'
+	gem 'database_cleaner'
 end
 
 

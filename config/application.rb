@@ -58,5 +58,19 @@ module Devblog
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # source:  Everyday Rails Testing with Rspec book
+    # configures the spec tests that are automatically generated
+    config.generators do |g|
+        g.test_framework :rpec,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: true
+        g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
+
   end
 end

@@ -8,6 +8,12 @@ class Admin < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+
+  def self.admin_limit_reached?
+  	self.all.count == 1
+  end
+
 end
 # == Schema Information
 #
