@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717221125) do
+ActiveRecord::Schema.define(:version => 20120802220739) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(:version => 20120717221125) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.date     "release_date"
-    t.string   "teaser"
+    t.datetime "release_date"
+    t.text     "teaser",       :limit => 255
     t.text     "content"
     t.string   "permalink"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
 end
