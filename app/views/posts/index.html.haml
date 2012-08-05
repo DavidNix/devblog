@@ -1,28 +1,19 @@
 - provide(:title, "Posts")
-%h1 Listing posts
+%h1 Posts
 
-%table
-  %tr
-    %th Title
-    %th Release date
-    %th Teaser
-    %th Content
-    %th Permalink
-    %th
-    %th
-    %th
+= link_to 'New Post', new_post_path
 
-  - @posts.each do |post|
-    %tr
-      %td= post.title
-      %td= post.release_date
-      %td= post.teaser
-      %td= post.content
-      %td= post.permalink
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
+- @posts.each do |post|
+  %h3 Title
+  %p= post.title
+  %h3 Permalink
+  %p= post.permalink
+  %h3 Release Date
+  %p= post.release_date
+  = link_to 'Show', post
+  = link_to 'Edit', edit_post_path(post)
+  = link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete
+  %hr
 
 %br
-
 = link_to 'New Post', new_post_path
