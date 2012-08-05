@@ -10,7 +10,7 @@ class Admin < ActiveRecord::Base
   # attr_accessible :title, :body
 
 
-  def self.admin_limit_reached?
+  def self.limit_reached?
   	self.all.count == 1
   end
 
