@@ -26,7 +26,7 @@ describe "AdminRegistrations" do
         click_button "Sign up"
       end
       it { should have_selector('div.alert', text: 'Welcome! You have signed up successfully.') }
-      it { should have_selector('title', text: full_title('Posts')) }
+      it { should have_selector('title', text: full_title('All Posts')) }
     end
 
     context "with a 2nd admin user" do
@@ -71,7 +71,6 @@ describe "AdminRegistrations" do
       it { should have_selector('div.alert', text: 'Signed in successfully.')}
       it { should have_selector('a', text: 'Sign Out') }
       it { should have_selector('a', text: 'Posts') }
-      it { should have_selector('title', text: full_title('Posts')) }
     end
   end
 

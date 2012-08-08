@@ -19,6 +19,12 @@ describe PostsController do
     	get :index
     	response.should render_template :index
     end
+
+    it "orders the posts in descending order" do
+      2.times { FactoryGirl.create(:post) }
+      get :index
+      assigns(:posts).first.release_date.should > assigns(:posts).last.release_date
+    end
   end
 
   describe "GET show" do

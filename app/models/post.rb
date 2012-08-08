@@ -12,6 +12,9 @@ class Post < ActiveRecord::Base
   # VALID_PERMALINK_REGEX = /[a-z0-9]+/i
   validates :permalink, presence: true, uniqueness: { case_sensitive: false } #format: { with: VALID_PERMALINK_REGEX }
 
+  # pagination
+  self.per_page = 20
+
 end
 # == Schema Information
 #

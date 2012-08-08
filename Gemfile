@@ -10,6 +10,8 @@ gem 'sqlite3'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.

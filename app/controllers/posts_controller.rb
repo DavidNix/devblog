@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_filter :authenticate_admin!
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page], order: 'release_date desc')
+    # @posts = Post.order('release_date desc')
   end
 
   def show

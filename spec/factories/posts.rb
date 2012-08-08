@@ -2,8 +2,8 @@ FactoryGirl.define do
 	factory :post do
 		title { Faker::Lorem.words(devblog_rand(10)).join(" ") }
 
-		teaser { Faker::Lorem.sentences(devblog_rand(5)) }
-		content { Faker::Lorem.paragraphs(devblog_rand(10) ) }
+		teaser { Faker::Lorem.sentences(devblog_rand(5)).join(" ") }
+		content { Faker::Lorem.paragraphs(devblog_rand(10) ).join("\n") }
 
 		permalink { Faker::Lorem.words(devblog_rand(10)).join("-") }
 
