@@ -3,5 +3,8 @@
 
 = render 'form'
 
-= link_to 'Preview', @post
 = link_to 'Back', posts_path
+\|
+= link_to 'Delete', @post, data: { confirm: 'Are you sure?' }, :method => :delete
+\|
+= link_to 'Preview', @post
