@@ -1,4 +1,7 @@
 class Admin < ActiveRecord::Base
+
+  validate :admin_limit, on: :create
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -12,6 +15,12 @@ class Admin < ActiveRecord::Base
 
   def self.limit_reached?
   	self.all.count == 1
+  end
+
+  def admin_limit
+    if Admin.limit_reached?
+      errors.add(:email, "Unable to create admin.")
+    end
   end
 
 end

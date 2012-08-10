@@ -16,7 +16,15 @@ describe Admin do
 	it "is invalid with duplicate emails" do
 		fake_email = "david@faKe.com"
 		FactoryGirl.create(:admin, email: fake_email)
-		FactoryGirl.build(:admin, email: fake_email.upcase).should_not be_valid
+		if Admin.limit_reached? && Admin.all.count > 1
+			FactoryGirl.build(:admin, email: fake_email.upcase).should_not be_valid
+		end
+	end
+
+	it "is invalid when over admin limit" do
+		# for admin limit == 1
+		FactoryGirl.create(:admin)
+		FactoryGirl.build(:admin).should_not be_valid
 	end
 
 end
