@@ -6,7 +6,7 @@ class Admin < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -41,5 +41,8 @@ end
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
+#  failed_attempts        :integer         default(0)
+#  unlock_token           :string(255)
+#  locked_at              :datetime
 #
 

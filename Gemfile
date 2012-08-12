@@ -42,6 +42,7 @@ group :test do
 	gem 'factory_girl_rails'
 	gem 'launchy'
 	gem 'database_cleaner'
+	gem 'email_spec'
 end
 
 

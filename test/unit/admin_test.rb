@@ -22,5 +22,8 @@ end
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
+#  failed_attempts        :integer         default(0)
+#  unlock_token           :string(255)
+#  locked_at              :datetime
 #
 

@@ -5,7 +5,8 @@ FactoryGirl.define do
 		teaser { Faker::Lorem.sentences(devblog_rand(5)).join(" ") }
 		content { Faker::Lorem.paragraphs(devblog_rand(10) ).join("\n") }
 
-		permalink { Faker::Lorem.words(devblog_rand(10)).join("-") }
+		#permalink { Faker::Lorem.words(devblog_rand(10)).join("-") }
+		sequence(:permalink) { |n| "this-is-the-permalink-#{n}" }
 
 		release_date { Time.random_date }
 
