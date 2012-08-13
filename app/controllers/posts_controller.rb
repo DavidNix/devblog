@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.paginate(page: params[:page], order: 'release_date desc')
-    # @posts = Post.order('release_date desc')
   end
 
   def show

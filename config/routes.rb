@@ -12,6 +12,10 @@ Devblog::Application.routes.draw do
 
   resources :posts
 
+  get "articles", to: "articles#index"
+
+  get 'articles/:permalink', to: "articles#show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

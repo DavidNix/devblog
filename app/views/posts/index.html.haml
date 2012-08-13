@@ -3,7 +3,7 @@
 
 = link_to 'New Post', new_post_path
 
-= will_paginate
+= will_paginate @posts
 
 - @posts.each do |post|
   %div{ id: "post_#{post.id}" }
@@ -20,4 +20,4 @@
 %br
 = link_to 'New Post', new_post_path
 
-= will_paginate
+= will_paginate @posts
