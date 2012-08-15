@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
   self.per_page = 20
 
   def self.published
-  	Post.where('release_date < ?', Time.now)
+  	Post.where('release_date <= ?', Time.now)
   end
 
   def self.published_with_pagination(page_num, per_page=5)
