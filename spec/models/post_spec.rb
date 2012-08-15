@@ -31,7 +31,7 @@ describe Post do
 		fake_permalink_good = "this-is-a-permalink"
 		fake_permalink_bad = " this   IS a PermaLINK      "
 		FactoryGirl.create(:post, permalink: fake_permalink_good)
-		FactoryGirl.create(:post, permalink: fake_permalink_bad).should_not be_valid
+		FactoryGirl.build(:post, permalink: fake_permalink_bad).should_not be_valid
 	end
 
 	it "is valid with spaces in the permalink" do
