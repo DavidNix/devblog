@@ -27,20 +27,6 @@ describe PostsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested post to @post" do
-      post = FactoryGirl.create(:post)
-      get :show, id: post
-      assigns(:post).should eq(post)
-    end
-
-    it "renders the :show template" do
-      post = FactoryGirl.create(:post)
-      get :show, id: post
-      response.should render_template :show
-    end
-  end
-
   describe "GET new" do
     it "assigns a new post to @post" do
       get :new

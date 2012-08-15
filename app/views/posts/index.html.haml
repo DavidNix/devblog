@@ -12,7 +12,7 @@
     %p= post.permalink
     %h4 Publish Date
     %p= post.published_date
-    = link_to 'Preview', post
+    = link_to 'Preview', article_path(post)
     = link_to 'Edit', edit_post_path(post)
     = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, :method => :delete
     %hr
