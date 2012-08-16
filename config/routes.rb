@@ -2,7 +2,9 @@ Devblog::Application.routes.draw do
 
   root to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
+  
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
 
   devise_for :admins, controllers: { registrations: "admin_registrations" }
 
@@ -14,7 +16,6 @@ Devblog::Application.routes.draw do
   resources :posts, except: :show
 
   get "articles", to: "articles#index"
-
   get 'articles/:id', to: "articles#show", as: :article
 
   # The priority is based upon order of creation:
