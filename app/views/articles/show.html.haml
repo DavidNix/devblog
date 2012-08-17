@@ -1,0 +1,9 @@
+- provide(:title, @article.title)
+
+%h2= @article.title
+%p= @article.published_date
+%p Category Goes Here
+
+%div= @article.content
+
+= link_to 'Back', :back
