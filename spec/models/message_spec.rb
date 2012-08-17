@@ -14,7 +14,7 @@ describe Message do
 	end
 
 	it "is invalid without a message body" do
-		FactoryGirl.build(:message, message_body: nil).should_not be_valid
+		FactoryGirl.build(:message, body: nil).should_not be_valid
 	end
 
 	it "is invalid without a properly formatted email" do

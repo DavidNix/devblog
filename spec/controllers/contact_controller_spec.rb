@@ -36,7 +36,7 @@ describe ContactController do
     end
 
     context "with invalid information" do
-      let (:message_attributes) { FactoryGirl.attributes_for(:message, email: nil, name: nil, message_body: nil) }
+      let (:message_attributes) { FactoryGirl.attributes_for(:message, email: nil, name: nil, body: nil) }
       it "redirects to the new template" do
         post :create, message: message_attributes
         response.should render_template :new

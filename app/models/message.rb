@@ -6,16 +6,16 @@ class Message
 	extend ActiveModel::Naming
 
 	HUMANIZED_ATTRIBUTES = {
-    	message_body: "Message",
+    	body: "Message",
     	email: "Email address"
   	}
 	def self.human_attribute_name(attr, options={})
 	   HUMANIZED_ATTRIBUTES[attr.to_sym] || super
 	end
 
-	attr_accessor :attributes, :name, :email, :message_body
+	attr_accessor :attributes, :name, :email, :body
 
-	validates :name, :email, :message_body, presence: true
+	validates :name, :email, :body, presence: true
 	validates :email, format: { with: DevblogExtensions::VALID_EMAIL_REGEX, message: "does not appear to be valid" }, unless: "email.blank?"
 
 	def initialize(attributes = {})
