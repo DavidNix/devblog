@@ -66,7 +66,7 @@ describe "Posts pages" do
 				fill_in "Content", with: post.content
 				click_button "Save"
 			end
-			it { should have_selector('div.alert', text: "Post was successfully created.") }
+			it { should have_selector('div.alert.alert-success', text: "Post was successfully created.") }
 			it { should have_content 'Test Title 101' }
 		end
 

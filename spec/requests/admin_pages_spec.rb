@@ -25,7 +25,7 @@ describe "AdminRegistrations" do
         fill_in "Password confirmation", with: admin1.password_confirmation
         click_button "Sign up"
       end
-      it { should have_selector('div.alert', text: 'Welcome! You have signed up successfully.') }
+      it { should have_selector('div.alert.alert-success', text: 'Welcome! You have signed up successfully.') }
       it { should have_selector('title', text: full_title('All Posts')) }
     end
 
@@ -36,7 +36,7 @@ describe "AdminRegistrations" do
         visit new_admin_registration_path
       end
 
-      it { should have_selector('div.alert', text: 'Unable to create new admin.') }
+      it { should have_selector('div.alert.alert-error', text: 'Unable to create new admin.') }
       it { Admin.all.count.should == 1 }
 
     end
@@ -53,7 +53,7 @@ describe "AdminRegistrations" do
         click_button "Sign in"
       end
 
-      it { should have_selector('div.alert', text: 'Invalid') }
+      it { should have_selector('div.alert.alert-error', text: 'Invalid') }
       it { should have_selector('title', text: full_title('Admin Sign In')) }
 
     end
@@ -68,7 +68,7 @@ describe "AdminRegistrations" do
         fill_in "Password", with: admin2.password
         click_button "Sign in"
       end
-      it { should have_selector('div.alert', text: 'Signed in successfully.')}
+      it { should have_selector('div.alert.alert-success', text: 'Signed in successfully.')}
       it { should have_selector('a', text: 'Sign Out') }
       it { should have_selector('a', text: 'Posts') }
     end
@@ -85,7 +85,7 @@ describe "AdminRegistrations" do
         end
       end
 
-      it { should have_selector('div.alert', text: 'Your account is locked.') }
+      it { should have_selector('div.alert.alert-error', text: 'Your account is locked.') }
 
       it "sends an unlock email to the admin" do
         open_last_email.should be_delivered_to admin.email
