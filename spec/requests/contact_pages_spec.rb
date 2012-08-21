@@ -39,6 +39,14 @@ describe "Contact pages" do
 				click_button "Send"
 			end
 			it { should have_selector('div.alert.alert-success', text: "Message was successfully sent.") }
+
+			it "sends a valid email" do
+
+				open_last_email.should be_delivered_to DevblogExtensions::CONTACT_EMAIL_TO
+        		open_last_email.should have_body_text message.body
+        		open_last_email.should be_delivered_from "#{message.name} <#{message.email}>"
+    		end
+
 		end
 
 	end

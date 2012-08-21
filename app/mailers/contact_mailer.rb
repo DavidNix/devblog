@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  default to: "change-me-in-mailers-directory@example.com"
+  default to: DevblogExtensions::CONTACT_EMAIL_TO
 
 	def new_message(message)
 		@message = message
