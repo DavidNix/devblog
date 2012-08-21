@@ -5,10 +5,12 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     = render 'layouts/shim'
   %body 
     = render 'layouts/header'
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: "alert alert-#{name}"
+    .container
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: "alert alert-#{name}"
     
-    = yield
+      = yield

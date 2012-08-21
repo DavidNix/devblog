@@ -1,8 +1,16 @@
-%nav
-  %ul
-    %li= link_to "Articles", articles_path
-    %li= link_to "About", about_path
-    %li= link_to "Contact", contact_path
-    -if admin_signed_in?
-      %li= link_to "Posts", posts_path
-      %li= link_to "Sign Out", destroy_admin_session_path, method: :delete
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      = link_to "Devblog", root_path, class: "brand"
+      .pull-right
+        %ul.nav
+          %li{class: is_active?(articles_path)}= link_to "Articles", articles_path
+          %li{class: is_active?(about_path)}= link_to "About", about_path
+          %li{class: is_active?(contact_path)}= link_to "Contact", contact_path
+          -if admin_signed_in?
+            %li.dropdown{class: is_active?(posts_path)}
+              %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+                %i.icon-user.icon-white
+              %ul.dropdown-menu
+                %li= link_to "Posts", posts_path
+                %li= link_to "Sign Out", destroy_admin_session_path, method: :delete

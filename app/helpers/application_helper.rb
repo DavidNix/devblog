@@ -11,4 +11,16 @@ module ApplicationHelper
     end
   end
 
+  # for setting the class of the active nav link
+  # you can pass in either a string or array
+  def is_active?(path)
+  	paths = []
+  	if not path.is_a?(Array)
+  		paths << path
+  	else
+  		paths = path
+  	end
+  	paths.each { |p| return "active" if current_page?(p) }
+  end
+
 end
