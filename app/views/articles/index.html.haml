@@ -1,15 +1,19 @@
 - provide(:title, "Articles")
-%h1 Articles
 
-= will_paginate @articles
+.row
+  .span9
+    %h1 Articles
 
-- @articles.each do |article|
-  %div{ id: "article_#{article.id}" }
-    %h3= article.title
-    %p= article.published_date
-    %p= article.teaser
-    = link_to 'Read More', article_path(article)
-    %hr
-%br
+    - @articles.each do |article|
+      %div{ id: "article_#{article.id}" }
+        %h3= article.title
+        %p= article.published_date
+        %p= article.teaser
+        = link_to 'Read More', article_path(article)
+        %hr
+    %br
 
-= will_paginate @articles
+    = will_paginate @articles
+
+  .span3
+    / put sidebar here
