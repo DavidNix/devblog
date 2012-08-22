@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  default to: DevblogExtensions::CONTACT_EMAIL_TO
+  default to: DevblogExtensions::CONTACT_DELIVERY_TO_EMAIL
 
 	def new_message(message)
 		@message = message

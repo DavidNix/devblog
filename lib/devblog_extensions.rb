@@ -1,7 +1,7 @@
 module DevblogExtensions
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-	CONTACT_EMAIL_TO = "change-me-in-devblogextensionsy@example.com"
+	CONTACT_DELIVERY_TO_EMAIL = "change-me-in-devblogextensionsy@example.com"
 end
 
 

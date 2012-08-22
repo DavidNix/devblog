@@ -11,9 +11,10 @@ describe "Contact pages" do
 				fill_in "Name", with: ""
 				fill_in "Email", with: ""
 				fill_in "message_body", with: ""
-				click_button "Send"
+				click_button "Send Message"
 			end
-			it { should have_selector('div#error_explanation') }
+			it { should have_selector('div.alert.alert-error') }
+			it { should_not have_content "does not appear to be valid" }
 		end
 
 		context "with invalid email" do
@@ -23,10 +24,10 @@ describe "Contact pages" do
 				fill_in "Name", with: message.name
 				fill_in "Email", with: "david@"
 				fill_in "message_body", with: message.body
-				click_button "Send"
+				click_button "Send Message"
 			end
-			it { should have_selector('div#error_explanation', text: "Email address does not appear to be valid") }
-			it { should_not have_selector('div#error_explanation', text: "Email address can't be blank") }
+			it { should have_selector('div.alert.alert-error', text: "Please review the problems below:") }
+			it { should have_content "does not appear to be valid" }
 		end
 
 		context "with valid information" do
@@ -36,13 +37,13 @@ describe "Contact pages" do
 				fill_in "Name", with: message.name
 				fill_in "Email", with: message.email
 				fill_in "message_body", with: message.body
-				click_button "Send"
+				click_button "Send Message"
 			end
 			it { should have_selector('div.alert.alert-success', text: "Message was successfully sent.") }
 
 			it "sends a valid email" do
 
-				open_last_email.should be_delivered_to DevblogExtensions::CONTACT_EMAIL_TO
+				open_last_email.should be_delivered_to DevblogExtensions::CONTACT_DELIVERY_TO_EMAIL
         		open_last_email.should have_body_text message.body
         		open_last_email.should be_delivered_from "#{message.name} <#{message.email}>"
     		end

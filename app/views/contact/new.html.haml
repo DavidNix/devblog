@@ -1,20 +1,8 @@
-= form_for @message, :url => contact_path do |f|
-  -if @message.errors.any?
-    %div.alert
-      #error_explanation
-        %h2= "Please correct the following #{pluralize(@message.errors.count, "error")}."
-        %ul
-          - @message.errors.full_messages.each do |msg|
-            %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :message
-    = f.text_area :body
-  .actions
-    = f.submit 'Send'
+.row
+  .span5.offset4
+    = simple_form_for @message, url: contact_path, defaults: { input_html: {class: "input-xlarge"} } do |f|
+      = f.error_notification
+      = f.input :name
+      = f.input :email
+      = f.input :body, label: "Message", as: :text, input_html: { class: "input-xlarge", rows: 7 }
+      = f.button :submit, value: "Send Message"
