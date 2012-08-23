@@ -1,26 +1,10 @@
-= form_for @post do |f|
-  -if @post.errors.any?
-    %div.alert
-      #error_explanation
-        %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-        %ul
-          - @post.errors.full_messages.each do |msg|
-            %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :permalink
-    = f.text_field :permalink
-  .field
-    = f.label :release_date
-    = f.date_select :release_date
-  .field
-    = f.label :teaser
-    = f.text_area :teaser
-  .field
-    = f.label :content
-    = f.text_area :content
-  .actions
-    = f.submit 'Save'
+.row
+  .span9
+    = simple_form_for @post, defaults: { input_html: {class: "input-xxlarge"} } do |f|
+      = f.error_notification
+      = f.input :title
+      = f.input :permalink
+      = f.input :release_date, label: "Publish Date", as: :datetime, input_html: { class: "input-small" }
+      = f.input :teaser, as: :text, input_html: { rows: 10 }
+      = f.input :content, as: :text
+      = f.button :submit, value: "Save"
