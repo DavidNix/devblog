@@ -43,9 +43,23 @@ describe "Articles Pages" do
 		end
 
 		it { should have_selector('title', text: article.title) }
-		it { should have_selector('h2', text: article.title) }
+		it { should have_selector('h1', text: article.title) }
 		it { should have_content article.published_date }
 		it { should have_selector('div', text: article.content) }
 
 	end
+
+	describe "show with markdown in content" do
+			let (:article) { FactoryGirl.create(:post, content:
+				"# Heading 1 \n## Heading 2 \n### Heading 3 \nExample of **strong text**." ) }
+			before do 
+				visit article_path(article)
+			end
+
+			it { should have_selector('h1', text: "Heading 1") }
+			it { should have_selector('h2', text: "Heading 2") }
+			it { should have_selector('h3', text: "Heading 3") }
+			it { should have_selector('strong', text: "strong text") }
+
+		end
 end

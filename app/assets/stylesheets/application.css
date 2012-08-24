@@ -15,3 +15,7 @@
 .header-title {
 	margin-bottom: 10px;
 }
+
+input.full-width {
+	width: 100%;
+}

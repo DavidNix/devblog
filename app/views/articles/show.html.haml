@@ -1,9 +1,14 @@
 - provide(:title, @article.title)
+.row
+  .span8
 
-%h2= @article.title
-%p= @article.published_date
-%p Category Goes Here
+    %h1= @article.title
+    %p= @article.published_date
+    %p Category Goes Here
 
-%div= @article.content
+    %div= markdown(@article.content)
 
-= link_to 'Back', :back
+    = link_to 'Back', :back
+
+  .span3
+    / sidebars

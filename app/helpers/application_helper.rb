@@ -23,4 +23,10 @@ module ApplicationHelper
   	paths.each { |p| return "active" if current_page?(p) }
   end
 
+  # gnerate html from markdown
+
+  def markdown(text)
+    sanitize(BlueCloth::new(text).to_html)
+  end
+
 end

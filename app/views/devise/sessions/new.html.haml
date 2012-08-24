@@ -2,17 +2,19 @@
 
 .row
   .span5.offset4
+    .well
+      .center-content
 
-    %h2.header-title Blog Admin Sign In
+        %h2.header-title Blog Admin Sign In
 
-    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-      = f.error_notification
-      = f.input :email
-      = f.input :password
+        = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          = f.error_notification
+          = f.input :email
+          = f.input :password
 
-      - if devise_mapping.rememberable?
-        = f.input_field :remember_me, as: :boolean, inline_label: 'Remember me'
+          - if devise_mapping.rememberable?
+            = f.input_field :remember_me, as: :boolean, inline_label: 'Remember me'
 
-      = f.button :submit, value: "Sign in"
+          = f.button :submit, value: "Sign in"
 
-    = render "devise/shared/links"
+        = render "devise/shared/links"
