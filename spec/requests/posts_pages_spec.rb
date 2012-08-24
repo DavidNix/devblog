@@ -104,7 +104,7 @@ describe "Posts pages" do
 				click_button "Save"
 			end
 
-			it { should have_content "Permalink has already been taken" }
+			it { should have_content "has already been taken" }
 
 		end
 
