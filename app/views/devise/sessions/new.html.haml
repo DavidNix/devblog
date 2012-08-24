@@ -11,7 +11,7 @@
       = f.input :password
 
       - if devise_mapping.rememberable?
-        = f.input :remember_me, as: :boolean, inline_label: 'Remember me'
+        = f.input_field :remember_me, as: :boolean, inline_label: 'Remember me'
 
       = f.button :submit, value: "Sign in"
 
