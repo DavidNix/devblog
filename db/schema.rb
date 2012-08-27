@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814215113) do
+ActiveRecord::Schema.define(:version => 20120827222526) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(:version => 20120814215113) do
     t.text     "teaser",       :limit => 255
     t.text     "content"
     t.string   "permalink"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "read_count",                  :default => 0
   end
 
   add_index "posts", ["permalink"], :name => "index_posts_on_permalink", :unique => true
