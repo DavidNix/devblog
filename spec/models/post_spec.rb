@@ -39,14 +39,14 @@ describe Post do
 	end
 
 	it "recent_articles lists the 5 most recent posts" do
-		let (:now) { Time.now }
-		before do
-			FactoryGirl.create(:post, release_date: now)
-			5.times do |i|
-				FactoryGirl.create(:post, release_date: "#{i}/01/2011")
-			end
+
+		now = Time.now
+		FactoryGirl.create(:post, release_date: now)
+		5.times do |i|
+			FactoryGirl.create(:post, release_date: Time.local(2011,i+1,1, 0,0,0) )
 		end
 		recents = Post.recent_articles
+
 		recents.count.should eq(5)
 		recents.first.release_date.should >= recents.last.release_date
 		recents.first.release_date.should eq(now)
