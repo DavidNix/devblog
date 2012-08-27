@@ -41,6 +41,10 @@ class Post < ActiveRecord::Base
   	Post.published.paginate(page: page_num, order: 'release_date desc', per_page: per_page)
   end
 
+  def self.recent_articles(num=5)
+    Post.published.order('release_date desc').limit(num)
+  end
+
 end
 # == Schema Information
 #

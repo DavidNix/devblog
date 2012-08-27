@@ -54,7 +54,6 @@ describe "Articles Pages" do
 				"# Heading 1 \n## Heading 2 \n### Heading 3 \nExample of **strong text**. \n[Example link](http://example.com)" ) }
 			before do 
 				visit article_path(article)
-				save_and_open_page
 			end
 
 			it { should have_selector('h1', text: "Heading 1") }
