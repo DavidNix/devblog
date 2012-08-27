@@ -70,7 +70,6 @@ describe "Articles Pages" do
 		let (:article) { Post.published.last }
 		before do
 			visit article_path(article)
-			save_and_open_page
 		end
 
 		it "should have recent sidebar" do
