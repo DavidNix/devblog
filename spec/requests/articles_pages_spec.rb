@@ -51,15 +51,17 @@ describe "Articles Pages" do
 
 	describe "show with markdown in content" do
 			let (:article) { FactoryGirl.create(:post, content:
-				"# Heading 1 \n## Heading 2 \n### Heading 3 \nExample of **strong text**." ) }
+				"# Heading 1 \n## Heading 2 \n### Heading 3 \nExample of **strong text**. \n[Example link](http://example.com)" ) }
 			before do 
 				visit article_path(article)
+				save_and_open_page
 			end
 
 			it { should have_selector('h1', text: "Heading 1") }
 			it { should have_selector('h2', text: "Heading 2") }
 			it { should have_selector('h3', text: "Heading 3") }
 			it { should have_selector('strong', text: "strong text") }
+			it { should have_selector('a', text: "Example link", href: "http://example.com") }
 
 		end
 end
