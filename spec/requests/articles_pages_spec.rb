@@ -7,6 +7,8 @@ describe "Articles Pages" do
 	before(:all) do
 		int = devblog_rand(50) + 5
 		int.times { FactoryGirl.create(:post) }
+		# at least one has to be a current date
+		FactoryGirl.create(:post, release_date: Time.now)
 	end
 
 	after(:all) { Post.delete_all }
@@ -62,5 +64,19 @@ describe "Articles Pages" do
 			it { should have_selector('strong', text: "strong text") }
 			it { should have_selector('a', text: "Example link", href: "http://example.com") }
 
+	end
+
+	describe "sidebars" do
+		let (:article) { Post.published.last }
+		before do
+			visit article_path(article)
+			save_and_open_page
 		end
+
+		it "should have recent sidebar" do
+			page.should have_selector('h2', text: "Recent Articles")
+			page.should have_selector('ul li a', text: Post.published.first.title)
+		end
+
+	end
 end

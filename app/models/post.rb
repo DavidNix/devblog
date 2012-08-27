@@ -34,15 +34,15 @@ class Post < ActiveRecord::Base
   self.per_page = 20
 
   def self.published
-  	Post.where('release_date <= ?', Time.now)
+  	Post.where('release_date <= ?', Time.now).order('release_date desc')
   end
 
   def self.published_with_pagination(page_num, per_page=5)
-  	Post.published.paginate(page: page_num, order: 'release_date desc', per_page: per_page)
+  	Post.published.paginate(page: page_num, per_page: per_page)
   end
 
   def self.recent_articles(num=5)
-    Post.published.order('release_date desc').limit(num)
+    Post.published.limit(num)
   end
 
 end
