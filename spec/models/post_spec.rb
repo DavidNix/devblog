@@ -52,6 +52,19 @@ describe Post do
 		recents.first.release_date.should eq(now)
 
 	end
+
+	it "popular_articles lists 5 most popular posts" do
+		now = Time.now
+		FactoryGirl.create(:post, release_date: now, read_count: 10)
+		5.times do |i|
+			FactoryGirl.create(:post, release_date: Time.local(2011,i+1,1, 0,0,0), read_count: i+1 )
+		end
+		populars = Post.popular_articles
+		populars.count.should eq(5)
+		populars.first.read_count.should >= populars.last.read_count
+		populars.first.read_count.should eq(10)
+		populars[1].read_count.should eq(5) # 2nd read_count should be 5
+	end
 end
 
 # describe Post do

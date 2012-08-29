@@ -8,7 +8,7 @@ describe "Articles Pages" do
 		int = devblog_rand(50) + 5
 		int.times { FactoryGirl.create(:post) }
 		# at least one has to be a current date
-		FactoryGirl.create(:post, release_date: Time.now)
+		FactoryGirl.create(:post, release_date: Time.now, read_count: 10 )
 	end
 
 	after(:all) { Post.delete_all }
@@ -87,6 +87,12 @@ describe "Articles Pages" do
 				page.should have_selector('h2', text: "Recent Articles")
 				page.should have_selector('ul li a', text: Post.published.first.title)
 			end
+
+			it "should have popular sidebar" do
+				page.should have_selector('h2', text: "Recent Articles")
+				page.should have_selector('ul li a', text: Post.popular_articles.first.title)
+			end
+
 		end
 	end
 

@@ -50,6 +50,10 @@ class Post < ActiveRecord::Base
     Post.published.limit(num)
   end
 
+  def self.popular_articles(num=5)
+    Post.where('release_date <= ?', Time.now).order('read_count desc, release_date desc').limit(num)
+  end
+
 end
 # == Schema Information
 #
