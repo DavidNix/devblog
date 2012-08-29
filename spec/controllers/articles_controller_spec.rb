@@ -24,16 +24,40 @@ describe ArticlesController do
   end
 
   describe "GET show" do
-    it "assigns the requested post to @article" do
-      article = FactoryGirl.create(:post)
-      get :show, id: article
-      assigns(:article).should eq(article)
+    context "without a signed in admin" do
+      it "assigns the requested post to @article" do
+        article = FactoryGirl.create(:post)
+        get :show, id: article
+        assigns(:article).should eq(article)
+      end
+
+      it "renders the :show template" do
+        article = FactoryGirl.create(:post)
+        get :show, id: article
+        response.should render_template :show
+      end
+
+      it "increments read_count by 1" do
+        article = FactoryGirl.create(:post)
+        get :show, id: article
+        assigns(:article).read_count.should eq(1)
+      end
+
+      it "increments the read_count multiple times"
     end
 
-    it "renders the :show template" do
-      article = FactoryGirl.create(:post)
-      get :show, id: article
-      response.should render_template :show
+    context "with a signed in admin" do
+      before do
+        admin = FactoryGirl.create(:admin)
+        sign_in admin
+      end
+      it "does not increment the read_count" do
+        article = FactoryGirl.create(:post)
+        get :show, id: article
+        assigns(:article).read_count.should eq(0)
+      end
+
     end
+
   end
 end
