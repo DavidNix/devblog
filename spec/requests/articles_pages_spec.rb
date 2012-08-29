@@ -65,6 +65,18 @@ describe "Articles Pages" do
 			it { should have_selector('a', text: "Example link", href: "http://example.com") }
 		end
 
+		context "without a signed in admin" do
+			let (:article) { FactoryGirl.create(:post, release_date: Time.now) }
+			visits = devblog_rand(10)
+			before do
+				visits.times { visit article_path(article) }
+			end
+
+			it "increments the read_count correctly" do
+				Post.find(article.id).read_count.should eq(visits)
+			end
+		end
+
 		context "with sidebars" do
 			let (:article) { Post.published.last }
 			before do

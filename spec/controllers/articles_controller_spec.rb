@@ -43,7 +43,11 @@ describe ArticlesController do
         assigns(:article).read_count.should eq(1)
       end
 
-      it "increments the read_count multiple times"
+      it "increments the read_count multiple times" do
+        article = FactoryGirl.create(:post)
+        3.times { get :show, id: article }
+        assigns(:article).read_count.should eq(3)
+      end
     end
 
     context "with a signed in admin" do

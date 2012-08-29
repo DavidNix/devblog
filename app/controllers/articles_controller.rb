@@ -5,6 +5,6 @@ class ArticlesController < ApplicationController
 
   def show
   	@article = Post.find(params[:id])
-  	@article.read_count +=1 unless admin_signed_in?
+  	@article.increment_read_count! unless admin_signed_in?
   end
 end

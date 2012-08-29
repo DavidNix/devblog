@@ -30,6 +30,11 @@ class Post < ActiveRecord::Base
   	self.release_date.strftime("%B %-d, %Y")
   end
 
+  def increment_read_count!
+    self.read_count += 1
+    self.save validate: false
+  end
+
   # pagination
   self.per_page = 20
 
