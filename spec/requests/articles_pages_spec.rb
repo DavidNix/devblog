@@ -89,7 +89,7 @@ describe "Articles Pages" do
 			end
 
 			it "should have popular sidebar" do
-				page.should have_selector('h2', text: "Recent Articles")
+				page.should have_selector('h2', text: "Popular Articles")
 				page.should have_selector('ul li a', text: Post.popular_articles.first.title)
 			end
 
