@@ -14,15 +14,13 @@ describe "Articles Pages" do
 	after(:all) { Post.delete_all }
 
 	describe "index" do
+		context "html" do
+			before do
+				# visit "articles?page=#{page_num}"
+				visit articles_path
+			end
 
-		before do
-			# visit "articles?page=#{page_num}"
-			visit articles_path
-		end
-
-		it { should have_selector('title', text: 'Articles') }
-
-		context "pagination" do
+			it { should have_selector('title', text: 'Articles') }
 			it { should have_selector('div.pagination') }
 			it { should have_link 'Read More' }
 
@@ -34,6 +32,28 @@ describe "Articles Pages" do
 				end
 			end
 		end
+
+		context "atom feed" do
+			let (:first_post) { Post.published.first }
+			before do
+				visit ('/articles.atom')
+			end
+			it { should have_xpath('//feed/id') }
+			it { should have_xpath('//feed/link') }
+			it { should have_xpath('//feed/title') }
+
+			it { should have_selector(:xpath, '//feed/entry/link', href: article_url(first_post))}
+			it { should have_selector(:xpath, '//feed/entry/title', text: first_post.title)}
+			it { should have_selector(:xpath, '//feed/entry/content', text: first_post.content)}
+			it { should have_selector(:xpath, '//feed/entry/author/name', text: "David Nix")}
+
+			it "has the correct updated time" do
+				atom_time = find(:xpath, '//feed/updated').text
+				post_time = first_post.release_date.strftime("%Y-%m-%dT%H:%M:%SZ")
+				atom_time.should eq(post_time)
+			end
+		end
+
 	end
 	
 	describe "show" do
