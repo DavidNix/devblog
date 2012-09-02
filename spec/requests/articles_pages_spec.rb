@@ -45,7 +45,7 @@ describe "Articles Pages" do
 			it { should have_selector(:xpath, '//feed/entry/link', href: article_url(first_post))}
 			it { should have_selector(:xpath, '//feed/entry/title', text: first_post.title)}
 			it { should have_selector(:xpath, '//feed/entry/content', text: first_post.content)}
-			it { should have_selector(:xpath, '//feed/entry/author/name', text: "David Nix")}
+			it { should have_selector(:xpath, '//feed/entry/author/name', text: DevblogExtensions::AUTHOR_NAME)}
 
 			it "has the correct updated time" do
 				atom_time = find(:xpath, '//feed/updated').text

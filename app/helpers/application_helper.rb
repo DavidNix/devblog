@@ -5,7 +5,7 @@ module ApplicationHelper
 # Returns the full title on a per-page basis.
 # Set the base title here
   def full_title(page_title)
-    base_title = "Devblog" # DevblogExtensions::WEBSITE_NAME
+    base_title = DevblogExtensions::WEBSITE_NAME
     if page_title.empty?
       base_title
     else

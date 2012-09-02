@@ -3,7 +3,9 @@ module DevblogExtensions
 
 	CONTACT_DELIVERY_TO_EMAIL = "change-me-in-devblogextensionsy@example.com"
 
-	WEBSITE_NAME = "Devblog"
+	WEBSITE_NAME = "DevBlog"
+
+	AUTHOR_NAME = "David Nix"
 
 end
 

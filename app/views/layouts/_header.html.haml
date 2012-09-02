@@ -1,7 +1,7 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      = link_to "Devblog", root_path, class: "brand"
+      = link_to DevblogExtensions::WEBSITE_NAME, root_path, class: "brand"
       .pull-right
         %ul.nav
           %li{class: is_active?(articles_path)}= link_to "Articles", articles_path
