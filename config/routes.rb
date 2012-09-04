@@ -18,6 +18,8 @@ Devblog::Application.routes.draw do
   get "articles", to: "articles#index"
   get 'articles/:id', to: "articles#show", as: :article
 
+  get 'sitemap', to: "sitemap#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
