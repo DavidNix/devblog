@@ -37,7 +37,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   for article in @articles do
     xml.url do
       xml.loc article_url(article)
-      xml.lastmod w3c_time(article.updated_at)
+      xml.lastmod article_date(article) # defined in helper
       xml.changefreq "yearly"
       xml.priority "0.5"
     end

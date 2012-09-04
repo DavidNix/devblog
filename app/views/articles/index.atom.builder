@@ -8,7 +8,7 @@ atom_feed do |feed|
 			entry.content(markdown(article.content), type: 'html')
 			entry.summary article.teaser
 			entry.author do |author|
-				author.name DevblogExtensions::AUTHOR_NAME # need to put this in DevBlogExtensions
+				author.name DevblogExtensions::AUTHOR_NAME
 			end
 		end
 	end
