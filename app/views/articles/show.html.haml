@@ -1,4 +1,5 @@
-- provide(:title, @article.title)
+- provide(:title, full_title(@article.title, true))
+
 .row
   .span8
 
@@ -10,7 +11,7 @@
 
     = link_to 'Back', :back
 
-  .span3
+  .span4
     / sidebars
     = render "popular_sidebar"
     = render "recent_sidebar"

@@ -20,7 +20,7 @@ describe "Articles Pages" do
 				visit articles_path
 			end
 
-			it { should have_selector('title', text: 'Articles') }
+			it { should have_selector('title', text: full_title('Articles')) }
 			it { should have_selector('div.pagination') }
 			it { should have_link 'Read More' }
 
@@ -70,7 +70,8 @@ describe "Articles Pages" do
 				within(:css, "div#article_#{article.id}") { click_link "Read More" }
 			end
 
-			it { should have_selector('title', text: article.title) }
+			it { should have_selector('title', text: full_title(article.title, true)) }
+			it { should_not have_selector('title', text: DevblogExtensions::WEBSITE_NAME) }
 			it { should have_selector('h1', text: article.title) }
 			it { should have_content article.published_date }
 			it { should have_selector('div', text: article.content) }

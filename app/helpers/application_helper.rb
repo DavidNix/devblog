@@ -4,12 +4,15 @@ module ApplicationHelper
 
 # Returns the full title on a per-page basis.
 # Set the base title here
-  def full_title(page_title)
+# Articles should not have the base title for SEO reasons.
+  def full_title(page_title=nil, remove_base=false)
     base_title = DevblogExtensions::WEBSITE_NAME
-    if page_title.empty?
-      base_title
-    else
+    if remove_base == true
+      "#{page_title}"
+    elsif not page_title.nil? || page_title.empty?
       "#{base_title} | #{page_title}"
+    else
+      base_title
     end
   end
 
@@ -25,8 +28,7 @@ module ApplicationHelper
   	paths.each { |p| return "active" if current_page?(p) }
   end
 
-  # gnerate html from markdown
-
+  # generate html from markdown
   def markdown(text)
     sanitize(BlueCloth::new(text).to_html)
   end
