@@ -1,0 +1,12 @@
+- provide(:title, full_title('Archives'))
+.row
+	.span8#archives
+		%h1 Articles Archives
+		- @post_months.sort.reverse.each do |month, posts|
+			%h2= month.strftime("%B %Y")
+			%ul
+			- for post in posts
+				%li= link_to post.title, article_path(post)
+	.span4
+		= render "articles/future_sidebar"
+		= render "articles/popular_sidebar"

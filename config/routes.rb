@@ -1,5 +1,7 @@
 Devblog::Application.routes.draw do
 
+  get "archives/index"
+
   root to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
   
@@ -17,6 +19,7 @@ Devblog::Application.routes.draw do
 
   get "articles", to: "articles#index"
   get 'articles/:id', to: "articles#show", as: :article
+  get 'archives', to: "archives#index"
 
   get 'sitemap', to: "sitemap#index"
 
