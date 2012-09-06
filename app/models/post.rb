@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :permalink, :release_date, :teaser, :title, :read_count
+  attr_accessible :content, :permalink, :release_date, :teaser, :title, :read_count, :publish_ready
 
   before_validation { |post| post.permalink = permalink.parameterize }
 
@@ -39,7 +39,7 @@ class Post < ActiveRecord::Base
   self.per_page = 20
 
   def self.published
-  	Post.where('release_date <= ?', Time.now).order('release_date desc')
+  	Post.where('release_date <= ? AND publish_ready = ?', Time.now, true).order('release_date desc')
   end
 
   def self.published_with_pagination(page_num, per_page=5)
@@ -59,14 +59,15 @@ end
 #
 # Table name: posts
 #
-#  id           :integer         not null, primary key
-#  title        :string(255)
-#  release_date :datetime
-#  teaser       :text(255)
-#  content      :text
-#  permalink    :string(255)
-#  created_at   :datetime        not null
-#  updated_at   :datetime        not null
-#  read_count   :integer         default(0)
+#  id            :integer         not null, primary key
+#  title         :string(255)
+#  release_date  :datetime
+#  teaser        :text(255)
+#  content       :text
+#  permalink     :string(255)
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#  read_count    :integer         default(0)
+#  publish_ready :boolean         default(FALSE)
 #
 

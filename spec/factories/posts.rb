@@ -10,6 +10,8 @@ FactoryGirl.define do
 
 		release_date { Time.random_date }
 
+		publish_ready { true }
+
 	end		
 end
 

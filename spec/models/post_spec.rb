@@ -74,14 +74,15 @@ end
 #
 # Table name: posts
 #
-#  id           :integer         not null, primary key
-#  title        :string(255)
-#  release_date :datetime
-#  teaser       :text(255)
-#  content      :text
-#  permalink    :string(255)
-#  created_at   :datetime        not null
-#  updated_at   :datetime        not null
-#  read_count   :integer         default(0)
+#  id            :integer         not null, primary key
+#  title         :string(255)
+#  release_date  :datetime
+#  teaser        :text(255)
+#  content       :text
+#  permalink     :string(255)
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#  read_count    :integer         default(0)
+#  publish_ready :boolean         default(FALSE)
 #
 
