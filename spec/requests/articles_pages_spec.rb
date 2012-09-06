@@ -7,8 +7,10 @@ describe "Articles Pages" do
 	before(:all) do
 		int = devblog_rand(50) + 5
 		int.times { FactoryGirl.create(:post) }
-		# at least one has to be a current date
+		# at least one has to be a current date, future date, and past date
 		FactoryGirl.create(:post, release_date: Time.now, read_count: 10 )
+		FactoryGirl.create(:post, release_date: Time.now + 1.month)
+		FactoryGirl.create(:post, release_date: Time.now - 1.month)
 	end
 
 	after(:all) { Post.delete_all }
@@ -112,6 +114,7 @@ describe "Articles Pages" do
 			let (:article) { Post.published.last }
 			before do
 				visit article_path(article)
+				save_and_open_page
 			end
 
 			it "should have future sidebar" do
