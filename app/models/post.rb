@@ -51,7 +51,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.popular_articles(num=5)
-    Post.where('release_date <= ?', Time.now).order('read_count desc, release_date desc').limit(num)
+    Post.published.order('read_count desc, release_date desc').limit(num)
   end
 
 end

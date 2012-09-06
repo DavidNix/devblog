@@ -15,6 +15,7 @@ describe "Articles Pages" do
 
 	describe "index" do
 		context "html" do
+			let (:unpublished_article) { FactoryGirl.create(:post, title: "I'm unpublished.", publish_ready: false) }
 			before do
 				# visit "articles?page=#{page_num}"
 				visit articles_path
@@ -24,7 +25,11 @@ describe "Articles Pages" do
 			it { should have_selector('div.pagination') }
 			it { should have_link 'Read More' }
 
-			it "should list each article" do 
+			it "does not list the unpublished article" do
+				page.should_not have_content("I'm unpublished.")
+			end
+
+			it "lists each article" do 
 				Post.published_with_pagination(1).each do |article|
 					page.should have_selector('h3', text: article.title )
 					page.should have_selector('p', text: article.published_date)

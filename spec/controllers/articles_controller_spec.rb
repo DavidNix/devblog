@@ -22,6 +22,14 @@ describe ArticlesController do
         get :index
         assigns(:articles).first.release_date.should >= assigns(:articles).last.release_date
       end
+
+      it "does not contain articles that are not ready to publish" do
+        unpublished = FactoryGirl.create(:post, release_date: Time.now, publish_ready: false)
+        published = FactoryGirl.create(:post, title: "Published Title", release_date: Time.now)
+        get :index
+        assigns(:articles).count.should eq(1)
+        assigns(:articles).first.title.should eq("Published Title")
+      end
     end
 
     context "Atom feed" do
