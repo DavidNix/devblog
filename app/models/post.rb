@@ -54,6 +54,10 @@ class Post < ActiveRecord::Base
     Post.published.order('read_count desc, release_date desc').limit(num)
   end
 
+  def self.future_articles(num=3)
+    Post.where('release_date > ? AND publish_ready = ?', Time.now, true).order('release_date asc')
+  end
+
 end
 # == Schema Information
 #

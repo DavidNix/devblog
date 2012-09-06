@@ -1,7 +1,7 @@
 - provide(:title, full_title("Articles"))
 
 .row
-  .span9
+  .span8
 
     - @articles.each do |article|
       %div{ id: "article_#{article.id}" }
@@ -14,6 +14,8 @@
 
     = will_paginate @articles
 
-  .span3
+  .span4
     / sidebars
+    = render "future_sidebar"
+    = render "popular_sidebar"
     

@@ -1,0 +1,5 @@
+.sidebar
+	%h2 Upcoming Articles
+	%ul
+		- Post.future_articles.each do |article|
+			%li= article.title
