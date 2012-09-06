@@ -114,14 +114,19 @@ describe "Articles Pages" do
 				visit article_path(article)
 			end
 
+			it "should have future sidebar" do
+				page.should have_selector('div#future h2', text: "Upcoming")
+				page.should have_selector('div#future ul li', text: Post.future_articles.first.title)
+			end
+
 			it "should have recent sidebar" do
-				page.should have_selector('h2', text: "Recent Articles")
-				page.should have_selector('ul li a', text: Post.published.first.title)
+				page.should have_selector('div#recent h2', text: "Recent")
+				page.should have_selector('div#recent ul li a', text: Post.published.first.title)
 			end
 
 			it "should have popular sidebar" do
-				page.should have_selector('h2', text: "Popular Articles")
-				page.should have_selector('ul li a', text: Post.popular_articles.first.title)
+				page.should have_selector('div#popular h2', text: "Popular")
+				page.should have_selector('div#popular ul li a', text: Post.popular_articles.first.title)
 			end
 
 		end

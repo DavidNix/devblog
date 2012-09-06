@@ -53,7 +53,7 @@ describe Post do
 
 	end
 
-	it "popular_articles lists 5 most popular posts" do
+	it "popular_articles lists 5 most popular posts in correct order" do
 		now = Time.now
 		FactoryGirl.create(:post, release_date: now, read_count: 10)
 		5.times do |i|
@@ -65,6 +65,25 @@ describe Post do
 		populars.first.read_count.should eq(10)
 		populars[1].read_count.should eq(5) # 2nd read_count should be 5
 	end
+
+	it "future_articles lists the 3 upcoming posts in correct order" do
+		present = Time.now
+		future1 = Time.now + 1.day
+		future2 = Time.now + 1.month
+		future3 = Time.now + 1.year
+		[present, future1, future2, future3].each do |time|
+			FactoryGirl.create(:post, release_date: time)
+		end
+		FactoryGirl.create(:post, release_date: Time.now + 2.days, publish_ready: false)
+
+		futures = Post.future_articles
+		futures.count.should eq(3)
+		futures[0].release_date.should eq(future1)
+		futures[1].release_date.should eq(future2)
+		futures[2].release_date.should eq(future3)
+
+	end
+
 end
 
 # describe Post do
