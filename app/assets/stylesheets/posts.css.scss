@@ -1,3 +1,38 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// This is the bar that shows the character count
+#bar
+{
+	background-color:#5fbbde;
+	width:0px;
+	height:16px;
+}
+#barbox
+{
+	float: left;
+	height:16px; 
+	background-color:#FFFFFF; 
+	width:100px; 
+	border:solid 1px #CCC; 
+	margin-right:3px;
+	margin-bottom: 10px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}
+#count
+{
+	float: left;
+	margin-right:8px;  
+}
+
+#contentbox
+{
+	margin-bottom: 0px;
+}
+
+#barbox-clear
+{
+	clear: left;
+}

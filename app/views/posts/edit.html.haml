@@ -1,10 +1,12 @@
 - provide(:title, full_title("Editing #{@post.title}"))
-%h1 Editing post
+.row
+	.span8
+		%h1 Editing post
 
-= render 'form'
+		= render 'form'
 
-= link_to 'Back', :back
-\|
-= link_to 'Delete', @post, data: { confirm: 'Are you sure?' }, :method => :delete
-\|
-= link_to 'Preview', article_path(@post)
+		= link_to 'Back', :back
+		\|
+		= link_to 'Delete', @post, data: { confirm: 'Are you sure?' }, :method => :delete
+		\|
+		= link_to 'Preview', article_path(@post)
