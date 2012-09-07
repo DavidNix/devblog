@@ -6,7 +6,7 @@
 			%h2= month.strftime("%B %Y")
 			%ul
 			- for post in posts
-				%li= link_to post.title, article_path(post)
+				%li= link_to post.title, article_url(post)
 	.span4
 		= render "articles/future_sidebar"
 		= render "articles/popular_sidebar"

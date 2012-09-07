@@ -2,4 +2,4 @@
 	%h2 Recent Articles
 	%ul
 		- Post.recent_articles.each do |article|
-			%li= link_to article.title, article_path(article)
+			%li= link_to article.title, article_url(article)

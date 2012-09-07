@@ -17,7 +17,7 @@ describe "Archives Pages" do
 
 	describe "index" do
 		before do 
-			visit archives_path
+			visit archives_url
 		end
 
 		it { should have_selector('title', text: full_title('Archives')) }

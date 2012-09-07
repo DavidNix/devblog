@@ -11,7 +11,7 @@ describe "Posts pages" do
 
 	before(:each) do
 		#sign in process
-		visit admin_path
+		visit admin_url
         fill_in "Email", with: admin.email
         fill_in "Password", with: admin.password
         click_button "Sign in"
@@ -19,7 +19,7 @@ describe "Posts pages" do
 
 	describe "index" do
 		before do 
-			visit posts_path
+			visit posts_url
 		end
 
 		it { should have_selector('title', text: 'All Posts') }
@@ -37,7 +37,7 @@ describe "Posts pages" do
 
 	describe "new" do
 		before do
-			visit posts_path
+			visit posts_url
 			click_link "New Post"
 		end
 		it { should have_selector('h1', text: "New post") }
@@ -46,7 +46,7 @@ describe "Posts pages" do
 	describe "edit" do
 		let (:post) { Post.order('release_date desc').first }
 		before do 
-			visit posts_path
+			visit posts_url
 			within(:css, "div#post_#{post.id}") { click_link "Edit" }
 		end
 
@@ -57,7 +57,7 @@ describe "Posts pages" do
 	describe "create" do
 		describe "shows valid selectors" do
 			before do
-				visit posts_path
+				visit posts_url
 				click_link "New Post"
 				post = FactoryGirl.build(:post)
 				fill_in "Title", with: "Test Title 101"
@@ -72,7 +72,7 @@ describe "Posts pages" do
 
 		describe "saves the post to the database" do
 			before do
-				visit posts_path
+				visit posts_url
 				click_link "New Post"
 				post = FactoryGirl.build(:post)
 				fill_in "Title", with: post.title
@@ -85,7 +85,7 @@ describe "Posts pages" do
 
 		describe "does not allow posts with duplicate permalinks" do
 			before do
-				visit posts_path
+				visit posts_url
 				click_link "New Post"
 				post = FactoryGirl.build(:post)
 				fill_in "Title", with: post.title
@@ -112,7 +112,7 @@ describe "Posts pages" do
 
 	describe "delete" do
 		before do
-			visit posts_path
+			visit posts_url
 			click_link "Edit"
 		end
 

@@ -5,8 +5,7 @@
   #count 70
   #barbox
     #bar
-  = f.label :permalink, id: "barbox-clear"
-  = f.input_field :permalink, class: "input-xxlarge"
+  = f.input :permalink, label_html: { id: "barbox-clear" }
   = f.input :release_date, label: "Publish Date", as: :datetime, input_html: { class: "input-small" }
   = f.input :teaser, as: :text, input_html: { rows: 10 }
   = f.input :content, as: :text, label: "Content (accepts markdown syntax)"

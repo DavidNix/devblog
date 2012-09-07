@@ -12,7 +12,7 @@ require 'spec_helper'
 # 		it "renders home page when admins in database" do
 # 			FactoryGirl.create(:admin)
 # 			get :new
-# 			response.should redirect_to root_path
+# 			response.should redirect_to root_url
 # 		end
 
 # 	end

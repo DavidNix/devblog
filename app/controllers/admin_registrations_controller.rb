@@ -4,7 +4,7 @@ class AdminRegistrationsController < Devise::RegistrationsController
 	def new
 		if Admin.limit_reached?
 			flash[:error] = 'Unable to create new admin.'
-			redirect_to root_path
+			redirect_to root_url
 		else
 			super
 		end

@@ -18,7 +18,7 @@ describe "AdminRegistrations" do
 
       let (:admin1) { FactoryGirl.build(:admin) }
       before do 
-        visit admin_path
+        visit admin_url
         click_link "Sign up"
         fill_in "Email", with: admin1.email
         fill_in "Password", with: admin1.password
@@ -33,7 +33,7 @@ describe "AdminRegistrations" do
 
       before do
         FactoryGirl.create(:admin)
-        visit new_admin_registration_path
+        visit new_admin_registration_url
       end
 
       it { should have_selector('div.alert.alert-error', text: 'Unable to create new admin.') }
@@ -47,7 +47,7 @@ describe "AdminRegistrations" do
 
     context "with invalid information" do
       before do 
-        visit admin_path
+        visit admin_url
         fill_in "Email", with: "abcdefg"
         fill_in "Password", with: ""
         click_button "Sign in"
@@ -63,7 +63,7 @@ describe "AdminRegistrations" do
       let (:admin2) { FactoryGirl.create(:admin) }
 
       before do
-        visit admin_path
+        visit admin_url
         fill_in "Email", with: admin2.email
         fill_in "Password", with: admin2.password
         click_button "Sign in"
@@ -77,7 +77,7 @@ describe "AdminRegistrations" do
 
       let (:admin) { FactoryGirl.create(:admin, password: "password") }
       before do
-        visit admin_path
+        visit admin_url
         21.times do
           fill_in "Email", with: admin.email
           fill_in "Password", with: "wrong-password"

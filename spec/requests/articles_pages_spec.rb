@@ -20,7 +20,7 @@ describe "Articles Pages" do
 			let (:unpublished_article) { FactoryGirl.create(:post, title: "I'm unpublished.", publish_ready: false) }
 			before do
 				# visit "articles?page=#{page_num}"
-				visit articles_path
+				visit articles_url
 			end
 
 			it { should have_selector('title', text: full_title('Articles')) }
@@ -73,7 +73,7 @@ describe "Articles Pages" do
 		context "with no markdown in content" do
 			let (:article) { Post.published_with_pagination(1).first }
 			before do
-				visit articles_path
+				visit articles_url
 				within(:css, "div#article_#{article.id}") { click_link "Read More" }
 			end
 
@@ -114,7 +114,6 @@ describe "Articles Pages" do
 			let (:article) { Post.published.last }
 			before do
 				visit article_path(article)
-				save_and_open_page
 			end
 
 			it "should have future sidebar" do

@@ -7,7 +7,7 @@ describe "Contact pages" do
 	describe "send a general contact message" do
 		context "with invalid information" do
 			before do
-				visit contact_path
+				visit contact_url
 				fill_in "Name", with: ""
 				fill_in "Email", with: ""
 				fill_in "message_body", with: ""
@@ -21,7 +21,7 @@ describe "Contact pages" do
 		context "with invalid email" do
 			let (:message) { FactoryGirl.build(:message) }
 			before do
-				visit contact_path
+				visit contact_url
 				fill_in "Name", with: message.name
 				fill_in "Email", with: "david@"
 				fill_in "message_body", with: message.body
@@ -34,7 +34,7 @@ describe "Contact pages" do
 		context "with valid information" do
 			let (:message) { FactoryGirl.build(:message) }
 			before do
-				visit contact_path
+				visit contact_url
 				fill_in "Name", with: message.name
 				fill_in "Email", with: message.email
 				fill_in "message_body", with: message.body
