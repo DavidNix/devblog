@@ -31,8 +31,6 @@ end
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
-	gem 'debugger'
-	gem 'guard-rspec'
 end
 
 group :development do
