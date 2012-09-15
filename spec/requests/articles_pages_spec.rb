@@ -82,6 +82,8 @@ describe "Articles Pages" do
 			it { should have_selector('h1', text: article.title) }
 			it { should have_content article.published_date }
 			it { should have_selector('div', text: article.content) }
+			# we want the search engine to choose the display text, so no meta description should be present
+			it { should_not have_xpath("//html/head/meta[@name='description']") }
 		end
 
 		context "with markdown in content" do

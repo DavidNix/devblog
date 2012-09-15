@@ -35,6 +35,7 @@ end
 
 group :development do
 	gem 'annotate', '~> 2.4.1.beta'
+	gem 'colorize'
 end
 
 group :test do

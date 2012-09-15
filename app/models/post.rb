@@ -46,6 +46,10 @@ class Post < ActiveRecord::Base
   	Post.published.paginate(page: page_num, per_page: per_page)
   end
 
+  
+
+  # methods for sidebars
+
   def self.recent_articles(num=5)
     Post.published.limit(num)
   end

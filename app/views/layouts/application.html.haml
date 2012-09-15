@@ -1,6 +1,10 @@
 !!! 5
 %html
   %head
+    %meta{ charset: "utf-8" }
+    - meta_description = yield(:meta_description)
+    - if not meta_description.blank?
+      %meta{ name: "description", content: meta_description }
     %title= yield(:title)
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
