@@ -7,11 +7,11 @@ describe ApplicationHelper do
     brand = DevblogExtensions::WEBSITE_NAME
 
     it "includes the page name" do
-      full_title("foo").should eq("#{brand} | foo")
+      full_title("foo").should eq("foo | #{brand}")
     end
 
     it "includes the base name" do
-      full_title("foo").should =~ /^#{brand}/
+      full_title("foo").should =~ /#{brand}$/
     end
 
     it "has only brand name for passing empty string" do

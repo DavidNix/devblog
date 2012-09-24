@@ -25,8 +25,6 @@ describe "Archives Pages" do
 
 		it { should have_xpath("//li/a[@rel='tooltip']", text: "Future Post") }
 
-		# it { should_not have_selector('li a', text: "Future Post") }
-
 		MONTH_RANGE.each do |i|
 			it { should have_selector('li a', text: "Post Number #{i}") }
 		end

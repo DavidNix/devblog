@@ -10,7 +10,7 @@ module ApplicationHelper
     if remove_base == true
       "#{page_title}"
     elsif not page_title.nil? || page_title.empty?
-      "#{base_title} | #{page_title}"
+      "#{page_title} | #{base_title}"
     else
       base_title
     end
