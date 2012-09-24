@@ -1,5 +1,10 @@
 .sidebar#future
-	%h2 Upcoming Articles
-	%ul
-		- Post.future_articles.each do |article|
-			%li= article.title
+  %h2 Upcoming Articles
+  - posts = Post.future_articles
+  - if posts.count >0
+    %ul
+      - posts.each do |article|
+        %li
+          %a{rel: "tooltip", title: "Coming soon!  Subscribe to be notified."}= article.title
+  - else
+    %p There are no upcoming articles at this time.

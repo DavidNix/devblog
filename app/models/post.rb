@@ -59,7 +59,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.future_articles(num=3)
-    Post.where('release_date > ? AND publish_ready = ?', Time.now, true).order('release_date asc')
+    Post.where('release_date > ? AND publish_ready = ?', Time.now, true).order('release_date asc').limit(num)
   end
 
 end
