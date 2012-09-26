@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   private
   # returns the appropriate layout
   def app_or_admin
-  	puts params[:controller].to_s.red
   	if is_blog_admin_controller?
   		"blog_admin/admin"
   	else
