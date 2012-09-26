@@ -1,0 +1,18 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      = link_to "#{DevblogExtensions::WEBSITE_NAME} Admin", posts_path, class: "brand"
+      .pull-right
+        %ul.nav
+          %li= link_to "Home", root_path
+          %li{class: is_active?(articles_path)}= link_to "Articles", articles_url
+          %li{class: is_active?(about_path)}= link_to "About", about_url
+          %li{class: is_active?(contact_path)}= link_to "Contact", contact_url
+          -if admin_signed_in?
+            %li.dropdown{class: is_active?(posts_path)}
+              %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+                %i.icon-user.icon-white
+              %ul.dropdown-menu
+                %li= link_to "Posts", posts_url
+                %li= link_to "Edit Admin", edit_admin_registration_path
+                %li= link_to "Sign Out", destroy_admin_session_path, method: :delete
