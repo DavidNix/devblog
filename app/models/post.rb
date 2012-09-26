@@ -36,7 +36,7 @@ class Post < ActiveRecord::Base
   end
 
   # pagination
-  self.per_page = 20
+  self.per_page = 10
 
   def self.published
   	Post.where('release_date <= ? AND publish_ready = ?', Time.now, true).order('release_date desc')

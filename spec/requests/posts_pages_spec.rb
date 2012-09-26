@@ -20,6 +20,7 @@ describe "Posts pages" do
 	describe "index" do
 		before do 
 			visit posts_url
+			save_and_open_page
 		end
 
 		it { should have_selector('title', text: 'All Posts') }

@@ -1,27 +1,27 @@
 - provide(:title, full_title("All Posts"))
 
 .row
-  .span7.offset2
+  .span8
     %h1 Posts
 
-    = link_to 'New Post', new_post_path, class: "btn btn-large btn-inverse"
+    = link_to 'New Post', new_post_path, class: "btn btn-large btn-primary"
+    #post-list
+      = will_paginate @posts
+      
+      - @posts.each do |post|
+        %div{ id: "post_#{post.id}" }
+          %h2= post.title
+          %p= post.permalink
+          %h4 Publish Date
+          %p= post.published_date
+          = link_to 'Preview', article_path(post), class: "btn"
+          = link_to 'Edit', edit_post_path(post), class: "btn"
+          = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, :method => :delete, class: "btn btn-danger"
+          %hr
 
-    = will_paginate @posts
+      %br
 
-    - @posts.each do |post|
-      %div{ id: "post_#{post.id}" }
-        %h3= post.title
-        %p= post.permalink
-        %h4 Publish Date
-        %p= post.published_date
-        = link_to 'Preview', article_path(post), class: "btn"
-        = link_to 'Edit', edit_post_path(post), class: "btn"
-        = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, :method => :delete, class: "btn btn-danger"
-        %hr
-
-    %br
-
-    = will_paginate @posts
+      = will_paginate @posts
 
   .span3
-    / sidebar content goes here
+    

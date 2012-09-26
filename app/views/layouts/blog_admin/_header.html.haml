@@ -5,7 +5,8 @@
       .pull-right
         %ul.nav
           %li= link_to "Live Site", root_path
-          %li= link_to "Articles", articles_url
-          %li{class: is_active?(posts_path)}= link_to "Posts", posts_path
-          %li{class: is_active?(edit_admin_registration_path)}= link_to "Edit Admin", edit_admin_registration_path
-          %li= link_to "Sign Out", destroy_admin_session_path, method: :delete
+          - unless current_page?(admin_path)
+            %li= link_to "Articles", articles_url
+            %li{class: is_active?(posts_path)}= link_to "Posts", posts_path
+            %li{class: is_active?(edit_admin_registration_path)}= link_to "Edit Admin", edit_admin_registration_path
+            %li= link_to "Sign Out", destroy_admin_session_path, method: :delete
