@@ -8,7 +8,7 @@
         %li
           %p 
             <strong>#{i}. 
-            = link_to article.title
+            = link_to article.title, edit_post_path(article)
             </strong>
             %br
             <em>To be published on #{article.published_date}.</em>
