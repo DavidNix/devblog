@@ -7,7 +7,9 @@
       - posts.each do |article|
         %li
           %p 
-            <strong>#{i}. #{article.title}</strong>
+            <strong>#{i}. 
+            = link_to article.title
+            </strong>
             %br
             <em>To be published on #{article.published_date}.</em>
         - i += 1
