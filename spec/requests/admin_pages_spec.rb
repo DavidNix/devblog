@@ -9,6 +9,7 @@ describe "AdminRegistrations" do
     
     it { should have_selector('h2',    text: 'Blog Admin Sign In') }
     it { should have_selector('title', text: full_title('Admin Sign In')) }
+    it { should have_xpath(ADMIN_STYLESHEET_XPATH) }
 
   end
 
@@ -27,6 +28,7 @@ describe "AdminRegistrations" do
       end
       it { should have_selector('div.alert.alert-success', text: 'Welcome! You have signed up successfully.') }
       it { should have_selector('title', text: full_title('All Posts')) }
+      it { should have_xpath(ADMIN_STYLESHEET_XPATH) }
     end
 
     context "with a 2nd admin user" do
@@ -55,6 +57,7 @@ describe "AdminRegistrations" do
 
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
       it { should have_selector('title', text: full_title('Admin Sign In')) }
+      it { should have_xpath(ADMIN_STYLESHEET_XPATH) }
 
     end
 

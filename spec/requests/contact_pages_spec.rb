@@ -16,6 +16,7 @@ describe "Contact pages" do
 			it { should have_selector('div.alert.alert-error') }
 			it { should_not have_content "does not appear to be valid" }
 			it { should have_selector('title', text: full_title('Contact')) }
+			it { should have_xpath(APP_STYLESHEET_XPATH) }
 		end
 
 		context "with invalid email" do

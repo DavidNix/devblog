@@ -23,6 +23,7 @@ describe "Posts pages" do
 		end
 
 		it { should have_selector('title', text: 'All Posts') }
+		it { should have_xpath(ADMIN_STYLESHEET_XPATH) }
 
 		context "pagination" do
 			it { should have_selector('div.pagination') }
@@ -41,6 +42,7 @@ describe "Posts pages" do
 			click_link "New Post"
 		end
 		it { should have_selector('h1', text: "New post") }
+		it { should have_xpath(ADMIN_STYLESHEET_XPATH) }
 	end
 
 	describe "edit" do
@@ -52,6 +54,7 @@ describe "Posts pages" do
 
 		it { should have_selector('title', text: "Editing #{post.title}" ) }
 		it { should have_selector('h1', text: "Editing post") }
+		it { should have_xpath(ADMIN_STYLESHEET_XPATH) }
 	end
 
 	describe "create" do

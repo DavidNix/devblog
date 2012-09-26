@@ -26,6 +26,7 @@ describe "Articles Pages" do
 			it { should have_selector('title', text: full_title('Articles')) }
 			it { should have_selector('div.pagination') }
 			it { should have_link 'Read More' }
+			it { should have_xpath(APP_STYLESHEET_XPATH) }
 
 			it "does not list the unpublished article" do
 				page.should_not have_content("I'm unpublished.")
@@ -82,6 +83,7 @@ describe "Articles Pages" do
 			it { should have_selector('h1', text: article.title) }
 			it { should have_content article.published_date }
 			it { should have_selector('div', text: article.content) }
+			it { should have_xpath(APP_STYLESHEET_XPATH) }
 			# we want the search engine to choose the display text, so no meta description should be present
 			it { should_not have_xpath("//html/head/meta[@name='description']") }
 		end
