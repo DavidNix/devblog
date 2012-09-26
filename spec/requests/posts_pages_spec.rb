@@ -9,6 +9,7 @@ describe "Posts pages" do
 	before(:all) do 
 		40.times { FactoryGirl.create(:post) }
 		FactoryGirl.create(:post, release_date: Time.now + 1.month, title: "Future Post 1")
+		FactoryGirl.create(:post, release_date: Time.now, read_count: 50, title: "Read count article")
 	end
 	after(:all) { Post.delete_all }
 
@@ -40,7 +41,12 @@ describe "Posts pages" do
 
 		context "sidebars" do
 			it {should have_selector('div.sidebar#future', text: "Upcoming Articles") }
-			it {should have_selector('div.sidebar#future ul li', text: "Future Post 1")}
+			it {should have_selector('div.sidebar#future ul li p a', text: "Future Post 1")}
+
+			it {should have_selector('div.sidebar#popular', text: "Popular Articles") }
+			it {should have_selector('div.sidebar#popular ul li p a', text: "Read count article")}
+			it {should have_selector('div.sidebar#popular ul li p', text: "Read count: 50")}
+
 		end
 	end
 

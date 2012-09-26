@@ -1,0 +1,9 @@
+.sidebar#popular
+  %h2 Popular Articles
+  %ul
+    - Post.popular_articles(10).each do |article|
+      %li
+        %p
+          = link_to article.title, article_url(article)
+          %br
+          <em>Read count:</em> <strong>#{article.read_count}</strong>
