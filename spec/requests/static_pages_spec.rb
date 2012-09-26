@@ -12,12 +12,14 @@ describe "StaticPages" do
     it { should have_xpath("//html/head/meta[@charset='utf-8']") }
     it { should have_xpath("//html/head/meta[@name='description']") }
     it { should have_xpath("//html/head/meta[@content]") }
+    it { should have_xpath(APP_STYLESHEET_XPATH) }
   end
 
   describe "About page" do
   	before { visit about_path }
   	it { should have_selector('title', text: full_title('About')) }
   	it { should have_selector('title', text: '|') } 
+    it { should have_xpath(APP_STYLESHEET_XPATH) }
   end
 
 end

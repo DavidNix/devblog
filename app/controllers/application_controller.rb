@@ -22,10 +22,9 @@ class ApplicationController < ActionController::Base
   # in the future, logic may need to be changed if you want to use Devise for other purposes, like users
   def is_blog_admin_controller?
   	# add specific controllers here
-  	blog_admin_controllers = %w{posts admin_registrations}
+  	blog_admin_controllers = %w{posts devise admin}
   	blog_admin_controllers.each do |controller|
-  		param_controller = params[:controller]
-  		if param_controller == controller || param_controller =~ /devise/i
+  		if self.class.to_s =~ /#{controller}/i
   			return true
   		end
   	end
