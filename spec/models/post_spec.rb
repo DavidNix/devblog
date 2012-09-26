@@ -38,6 +38,24 @@ describe Post do
 		FactoryGirl.build(:post, permalink: " this    is a permalink  ").should be_valid
 	end
 
+	it "ready_to_publish only shows publishable posts" do
+		FactoryGirl.create(:post, release_date: Time.now)
+		FactoryGirl.create(:post, release_date: Time.now + 1.month)
+		Post.ready_to_publish.count.should eq(1)
+	end
+
+	it "published shows publishable posts in correct order" do
+		now = Time.now
+		FactoryGirl.create(:post, release_date: now)
+		FactoryGirl.create(:post, release_date: now - 1.month)
+		FactoryGirl.create(:post, release_date: now + 1.month)
+
+		publishables = Post.published
+		publishables.count.should eq(2)
+		publishables.first.release_date.should > publishables.last.release_date
+		publishables.first.release_date.should eq(now)
+	end
+
 	it "recent_articles lists the 5 most recent posts" do
 
 		now = Time.now
@@ -55,15 +73,17 @@ describe Post do
 
 	it "popular_articles lists 5 most popular posts in correct order" do
 		now = Time.now
-		FactoryGirl.create(:post, release_date: now, read_count: 10)
-		5.times do |i|
-			FactoryGirl.create(:post, release_date: Time.local(2011,i+1,1, 0,0,0), read_count: i+1 )
-		end
+		FactoryGirl.create(:post, release_date: now - 1.day, read_count: 10)
+		FactoryGirl.create(:post, release_date: now, read_count: 5)
+		FactoryGirl.create(:post, release_date: now - 1.month, read_count: 1)
+
 		populars = Post.popular_articles
-		populars.count.should eq(5)
-		populars.first.read_count.should >= populars.last.read_count
+		populars.count.should eq(3)
+		populars.first.read_count.should > populars[1].read_count
+		populars[1].read_count.should > populars.last.read_count
 		populars.first.read_count.should eq(10)
 		populars[1].read_count.should eq(5) # 2nd read_count should be 5
+		populars.last.read_count.should eq(1)
 	end
 
 	it "future_articles lists the 3 upcoming posts in correct order" do

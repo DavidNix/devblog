@@ -38,8 +38,12 @@ class Post < ActiveRecord::Base
   # pagination
   self.per_page = 10
 
+  def self.ready_to_publish
+    Post.where('release_date <= ? AND publish_ready = ?', Time.now, true)
+  end
+
   def self.published
-  	Post.where('release_date <= ? AND publish_ready = ?', Time.now, true).order('release_date desc')
+  	Post.ready_to_publish.order('release_date desc')
   end
 
   def self.published_with_pagination(page_num, per_page=5)
@@ -53,7 +57,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.popular_articles(num=5)
-    Post.published.order('read_count desc, release_date desc').limit(num)
+    Post.ready_to_publish.order('read_count desc, release_date desc').limit(num)
   end
 
   def self.future_articles(num=3)
