@@ -7,7 +7,7 @@
     = link_to 'New Post', new_post_path, class: "btn btn-large btn-primary"
     #post-list
       = will_paginate @posts
-      
+
       - @posts.each do |post|
         %div{ id: "post_#{post.id}" }
           %h2= post.title
@@ -23,5 +23,6 @@
 
       = will_paginate @posts
 
-  .span3
+  .span4
+    = render "future_sidebar"
     

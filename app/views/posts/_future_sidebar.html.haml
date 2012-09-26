@@ -1,0 +1,15 @@
+.sidebar#future
+  %h2 Upcoming Articles
+  - posts = Post.future_articles
+  - if posts.count > 0
+    - i = 1
+    %ul
+      - posts.each do |article|
+        %li
+          %p 
+            <strong>#{i}. #{article.title}</strong>
+            %br
+            <em>To be published on #{article.published_date}.</em>
+        - i += 1
+  - else
+    %p You have no upcoming articles at this time.

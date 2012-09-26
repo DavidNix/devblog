@@ -1,9 +1,31 @@
+// General
+
 h1 {
 	margin-bottom: 20px;
 }
 
 #post-list {
 	margin-top: 10px;
+}
+
+// Sidebars
+
+.sidebar {
+	background-color:#FFFFFF; 
+	width: auto; 
+	border:solid 1px #CCC; 
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	margin-bottom: 15px;
+
+	h2 {
+		text-align: center;
+		margin-bottom: 5px;
+	}
+
+	ul li {
+		list-style-type: none;
+	}
 }
 
 // This is the character counter for the post title

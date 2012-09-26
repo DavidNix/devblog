@@ -6,7 +6,10 @@ describe "Posts pages" do
 
 	let(:admin) { FactoryGirl.create(:admin) }
 
-	before(:all) { 40.times { FactoryGirl.create(:post) } }
+	before(:all) do 
+		40.times { FactoryGirl.create(:post) }
+		FactoryGirl.create(:post, release_date: Time.now + 1.month, title: "Future Post 1")
+	end
 	after(:all) { Post.delete_all }
 
 	before(:each) do
@@ -20,7 +23,6 @@ describe "Posts pages" do
 	describe "index" do
 		before do 
 			visit posts_url
-			save_and_open_page
 		end
 
 		it { should have_selector('title', text: 'All Posts') }
@@ -31,9 +33,14 @@ describe "Posts pages" do
 
 			it "should list each post" do 
 				Post.paginate(page: 1, order: 'release_date desc').each do |post|
-					page.should have_selector('h3', text: post.title )
+					page.should have_selector('h2', text: post.title )
 				end
 			end
+		end
+
+		context "sidebars" do
+			it {should have_selector('div.sidebar#future', text: "Upcoming Articles") }
+			it {should have_selector('div.sidebar#future ul li', text: "Future Post 1")}
 		end
 	end
 
