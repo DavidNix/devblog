@@ -1,32 +1,33 @@
 - provide(:title, full_title("Edit Admin"))
 .row
   .span5.offset4
+    .well
 
-    %h1= "Edit #{resource_name.to_s.humanize}"
+      %h1= "Edit #{resource_name.to_s.humanize}"
 
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-      = devise_error_messages!
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = devise_error_messages!
 
-      = f.label :email
-      = f.email_field :email
-      %br
+        = f.label :email
+        = f.email_field :email
+        %br
 
-      = f.label :password, "Password (leave blank if you don't want to change it)"
-      = f.password_field :password, :autocomplete => "off"
-      %br
+        = f.label :password, "Password (leave blank if you don't want to change it)"
+        = f.password_field :password, :autocomplete => "off"
+        %br
 
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
-      %br
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+        %br
 
-      = f.label :current_password, "Current Password (we need your current password to confirm your changes)"
-      = f.password_field :current_password
-      %br
+        = f.label :current_password, "Current Password (we need your current password to confirm your changes)"
+        = f.password_field :current_password
+        %br
 
-      = f.submit "Update"
+        = f.submit "Update"
 
-    %p 
-      Unhappy? 
-      = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+      %p 
+        Unhappy? 
+        = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
 
-    = link_to "Back", :back
+      = link_to "Back", :back
