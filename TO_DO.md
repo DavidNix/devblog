@@ -1,0 +1,1 @@
+* Fix styling of paragraph in admin future_sidebar
