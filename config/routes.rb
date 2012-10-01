@@ -4,6 +4,7 @@ Devblog::Application.routes.draw do
 
   root to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
+  match '/products', to: 'static_pages#products'
   
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post

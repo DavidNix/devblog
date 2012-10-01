@@ -22,4 +22,11 @@ describe "StaticPages" do
     it { should have_xpath(APP_STYLESHEET_XPATH) }
   end
 
+  describe "Products" do
+    before { visit products_path }
+    it { should have_selector('title', text: full_title('Products')) }
+    it { should have_selector('title', text: '|') } 
+    it { should have_xpath(APP_STYLESHEET_XPATH) }
+  end
+
 end

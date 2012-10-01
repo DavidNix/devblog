@@ -5,6 +5,7 @@
       .pull-right
         %ul.nav
           %li{class: is_active?(articles_path)}= link_to "Articles", articles_url
+          %li{class: is_active?(products_path)}= link_to "Products", products_url
           %li{class: is_active?(about_path)}= link_to "About", about_url
           %li{class: is_active?(contact_path)}= link_to "Contact", contact_url
           -if admin_signed_in?

@@ -9,6 +9,14 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   	xml.priority "1.0"
   end
 
+  # products page
+  xml.url do
+    xml.loc products_url
+    xml.lastmod w3c_time # defined in helper
+    xml.changefreq "weekly"
+    xml.priority "0.8"
+  end
+
   # about page
   xml.url do
   	xml.loc about_url
