@@ -18,7 +18,6 @@ class Message
 
 	validates :email, presence: true
 	validates :email, format: { with: DevblogExtensions::VALID_EMAIL_REGEX, message: "does not appear to be valid" }, unless: "email.blank?"
-	validates :name, :body, presence: true, if: :needs_full_message
 
 	def initialize(attributes = {})
 		if not attributes.nil?
@@ -31,11 +30,6 @@ class Message
 
 	def persisted?
 		false
-	end
-
-	private
-	def needs_full_message
-		self.objective.blank? || self.objective.nil?
 	end
 
 end
