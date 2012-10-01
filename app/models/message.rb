@@ -16,7 +16,7 @@ class Message
 	#  Objective is a hidden field and used to determine if certain validations should run
 	attr_accessor :attributes, :name, :email, :body, :objective
 
-	validates :email, presence: true
+	validates :email, :body, :name, presence: true
 	validates :email, format: { with: DevblogExtensions::VALID_EMAIL_REGEX, message: "does not appear to be valid" }, unless: "email.blank?"
 
 	def initialize(attributes = {})
