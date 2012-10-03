@@ -14,6 +14,7 @@ class Message
 	end
 
 	#  static_body is a hidden field and used to determine if certain validations should run
+	#  if you want to allow the user to only submit their email, fill in static_body as a hidden field on the form
 	attr_accessor :attributes, :name, :email, :body, :static_body, :subject
 
 	validates :email, presence: true

@@ -47,10 +47,14 @@ describe "Contact pages" do
 
 				open_last_email.should be_delivered_to DevblogExtensions::CONTACT_DELIVERY_TO_EMAIL
         		open_last_email.should have_body_text message.body
-        		open_last_email.should be_delivered_from "#{message.name} <#{message.email}>"
+        		open_last_email.should be_delivered_from message.email
     		end
 
 		end
+
+	end
+
+	describe "send email only" do
 
 	end
 
