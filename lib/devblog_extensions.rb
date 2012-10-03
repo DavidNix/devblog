@@ -5,6 +5,8 @@ module DevblogExtensions
 
 	WEBSITE_NAME = "DevBlog"
 
+	WEBSITE_URL = "Devblog.com"
+
 	AUTHOR_NAME = "David Nix"
 
 end
