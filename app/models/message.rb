@@ -13,8 +13,8 @@ class Message
 	   HUMANIZED_ATTRIBUTES[attr.to_sym] || super
 	end
 
-	#  Objective is a hidden field and used to determine if certain validations should run
-	attr_accessor :attributes, :name, :email, :body, :objective
+	#  static_body is a hidden field and used to determine if certain validations should run
+	attr_accessor :attributes, :name, :email, :body, :static_body, :subject
 
 	validates :email, presence: true
 	validates :email, format: { with: DevblogExtensions::VALID_EMAIL_REGEX, message: "does not appear to be valid" }, unless: "email.blank?"
@@ -35,7 +35,7 @@ class Message
 
 	private
 	def needs_full_message
-		self.objective.blank? || self.objective.nil?
+		self.static_body.blank? || self.static_body.nil?
 	end
 
 end

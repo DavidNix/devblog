@@ -3,8 +3,8 @@ class ContactMailer < ActionMailer::Base
 
 	def new_message(message)
 		@message = message
-		subject = "Contact form submitted for CHANGE-ME.com"
-		mail(subject: subject, from: "#{@message.name} <#{@message.email}>" )
+		subject = @message.subject.blank? ? "Form submitted." : @message.subject
+		mail(subject: subject, from: @message.email )
 	end
 
 end
