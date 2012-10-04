@@ -16,35 +16,42 @@ describe ContactController do
   end
 
   describe "POST create" do
-    context "with valid information" do
-      let (:message_attributes) { FactoryGirl.attributes_for(:message) }
-      it "creates a new message" do
-        post :create, message: message_attributes
-        assigns(:message).attributes.symbolize_keys.should eq(message_attributes)
+
+    describe "full email message" do
+      context "with valid information" do
+        let (:message_attributes) { FactoryGirl.attributes_for(:message) }
+        it "creates a new message" do
+          post :create, message: message_attributes
+          assigns(:message).attributes.symbolize_keys.should eq(message_attributes)
+        end
+
+        it "redirects to contact path" do
+          post :create, message: message_attributes
+          response.should redirect_to contact_path
+        end
+
+        it "creates an email message" do
+          post :create, message: message_attributes
+          ActionMailer::Base.deliveries.count.should > 0
+        end
+
       end
 
-      it "redirects to root path" do
-        post :create, message: message_attributes
-        response.should redirect_to root_url
+      context "with invalid information" do
+        let (:message_attributes) { FactoryGirl.attributes_for(:message, email: nil, name: nil, body: nil) }
+        it "redirects to the new template" do
+          post :create, message: message_attributes
+          response.should render_template :new
+        end
+
+        it "has errors" do
+          post :create, message: message_attributes
+          assigns(:message).errors.messages.count.should > 0
+        end
       end
 
-      it "creates an email message" do
-        post :create, message: message_attributes
-        ActionMailer::Base.deliveries.count.should > 0
-      end
+      describe "email only message" do
 
-    end
-
-    context "with invalid information" do
-      let (:message_attributes) { FactoryGirl.attributes_for(:message, email: nil, name: nil, body: nil) }
-      it "redirects to the new template" do
-        post :create, message: message_attributes
-        response.should render_template :new
-      end
-
-      it "has errors" do
-        post :create, message: message_attributes
-        assigns(:message).errors.messages.count.should > 0
       end
 
     end

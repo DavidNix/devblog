@@ -41,7 +41,7 @@ describe "Contact pages" do
 				fill_in "message_body", with: message.body
 				click_button "Send Message"
 			end
-			it { should have_selector('div.alert.alert-success', text: "Message was successfully sent.") }
+			it { should have_selector('div.alert.alert-success') }
 
 			it "sends a valid email" do
 
