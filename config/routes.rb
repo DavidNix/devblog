@@ -3,11 +3,11 @@ Devblog::Application.routes.draw do
   get "archives/index"
 
   root to: 'static_pages#home'
-  match '/about', to: 'static_pages#about'
-  match '/products', to: 'static_pages#products'
+  match 'about', to: 'static_pages#about'
+  match 'products', to: 'static_pages#products'
   
-  match 'contact' => 'contact#new', :as => 'contact', :via => :get
-  match 'contact' => 'contact#create', :as => 'contact', :via => :post
+  match 'contact', to: 'contact#new', :via => :get
+  match 'contact', to: 'contact#create', :via => :post
 
   devise_for :admins, controllers: { registrations: "admin_registrations" }
 
