@@ -38,6 +38,13 @@ describe Post do
 		FactoryGirl.build(:post, permalink: " this    is a permalink  ").should be_valid
 	end
 
+	it "is_published? returns expected results" do
+		FactoryGirl.build(:post, release_date: Time.now).is_published?.should eq(true)
+		FactoryGirl.build(:post, release_date: Time.now + 1.day).is_published?.should eq(false)
+		FactoryGirl.build(:post, publish_ready: false, release_date: Time.now - 1.day).is_published?.should eq(false)
+
+	end
+
 	it "ready_to_publish only shows publishable posts" do
 		FactoryGirl.create(:post, release_date: Time.now)
 		FactoryGirl.create(:post, release_date: Time.now + 1.month)

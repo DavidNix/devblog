@@ -36,7 +36,11 @@ class Post < ActiveRecord::Base
   end
 
   def is_published?
-    true if self.publish_ready == true && self.release_date <= Time.now
+    if self.publish_ready == true && self.release_date <= Time.now
+      true
+    else
+      false
+    end
   end
 
   # pagination

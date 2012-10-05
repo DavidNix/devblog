@@ -57,16 +57,26 @@ describe ArticlesController do
       end
 
       it "increments read_count by 1" do
-        article = FactoryGirl.create(:post)
+        article = FactoryGirl.create(:post, release_date: Time.now)
         get :show, id: article
         assigns(:article).read_count.should eq(1)
       end
 
       it "increments the read_count multiple times" do
-        article = FactoryGirl.create(:post)
+        article = FactoryGirl.create(:post, release_date: Time.now)
         3.times { get :show, id: article }
         assigns(:article).read_count.should eq(3)
       end
+
+      it "redirects to 404 page if article is not published" do
+        article1 = FactoryGirl.create(:post, release_date: Time.now + 1.month)
+        article2 = FactoryGirl.create(:post, release_date: Time.now - 1.month, publish_ready: false)
+        [article1, article2].each do |article|
+          get :show, id: article
+          response.should redirect_to "/404.html"
+        end
+      end
+
     end
 
     context "with a signed in admin" do
@@ -78,6 +88,15 @@ describe ArticlesController do
         article = FactoryGirl.create(:post)
         get :show, id: article
         assigns(:article).read_count.should eq(0)
+      end
+
+      it "does not redirect to 404 page if article is not published" do
+        article1 = FactoryGirl.create(:post, release_date: Time.now + 1.month)
+        article2 = FactoryGirl.create(:post, release_date: Time.now - 1.month, publish_ready: false)
+        [article1, article2].each do |article|
+          get :show, id: article
+          response.should render_template :show
+        end
       end
 
     end
