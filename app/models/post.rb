@@ -35,6 +35,10 @@ class Post < ActiveRecord::Base
     self.save validate: false
   end
 
+  def is_published?
+    true if self.publish_ready == true && self.release_date <= Time.now
+  end
+
   # pagination
   self.per_page = 10
 
