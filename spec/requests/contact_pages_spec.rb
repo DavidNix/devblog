@@ -54,8 +54,4 @@ describe "Contact pages" do
 
 	end
 
-	describe "send email only" do
-
-	end
-
 end
