@@ -3,7 +3,7 @@
   .span5.offset4
     = simple_form_for @message, url: contact_path, defaults: { input_html: {class: "input-xlarge"} } do |f|
       = f.error_notification
-      = f.input :name
+      = f.input :name, required: true
       = f.input :email
-      = f.input :body, label: "Message", as: :text, input_html: { rows: 7 }
+      = f.input :body, label: "Message", as: :text, input_html: { rows: 7 }, required: true
       = f.button :submit, value: "Send Message"
