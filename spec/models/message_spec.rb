@@ -43,4 +43,18 @@ describe Message do
 		end
 	end
 
+	context "with optional subject" do
+
+		it "has default subject" do
+			email = ContactMailer.new_message(FactoryGirl.build(:message, subject: nil))
+			email.should have_subject "Form submitted from #{DevblogExtensions::WEBSITE_URL}."
+		end
+
+		it "has custom subject" do
+			email = ContactMailer.new_message(FactoryGirl.build(:message, subject: "Custom Subject"))
+			email.should have_subject "Custom Subject"
+		end
+
+	end
+
 end
