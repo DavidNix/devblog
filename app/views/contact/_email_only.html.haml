@@ -1,4 +1,5 @@
-= simple_form_for Message.new, url: contact_url(email_only: true, prev_controller: params[:controller], prev_action: params[:action]), defaults: { class: "form-inline" } do |f|
+= simple_form_for Message.new, url: contact_email_only_url(origin_url: request.fullpath), defaults: { class: "form-inline" } do |f|
+	= f.hidden_field :subject, value: "Email only form submitted from #{request.fullpath}"
 	= f.hidden_field :static_body, value: static_body_text
-	= f.input_field :email, placeholder: "david@example.com", input_html: {class: "input-medium"}
+	= f.input_field :email, placeholder: "Enter email address", input_html: {class: "input-medium"}
 	= f.button :submit, value: button_label

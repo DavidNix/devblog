@@ -6,8 +6,9 @@ Devblog::Application.routes.draw do
   match 'about', to: 'static_pages#about'
   match 'products', to: 'static_pages#products'
   
-  match 'contact', to: 'contact#new', :via => :get
-  match 'contact', to: 'contact#create', :via => :post
+  match 'contact', to: 'contact#new', via: :get
+  match 'contact', to: 'contact#create', via: :post
+  match 'contact_email_only', to: 'contact#create_email_only', via: :post
 
   devise_for :admins, controllers: { registrations: "admin_registrations" }
 
