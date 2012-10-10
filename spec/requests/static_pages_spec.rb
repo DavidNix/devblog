@@ -29,4 +29,11 @@ describe "StaticPages" do
     it { should have_xpath(APP_STYLESHEET_XPATH) }
   end
 
+  describe "404" do
+    before { visit not_found_path }
+    it { should have_selector('title', text: full_title('Page Not Found')) }
+    it { should have_selector('title', text: '|') } 
+    it { should have_xpath(APP_STYLESHEET_XPATH) }
+  end
+
 end
