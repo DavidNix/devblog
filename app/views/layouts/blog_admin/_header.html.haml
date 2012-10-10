@@ -5,7 +5,7 @@
       .pull-right
         %ul.nav
           %li= link_to "Live Site", root_path
-          - unless current_page?(admin_path)
+          - if admin_signed_in?
             %li= link_to "Articles", articles_url
             %li{class: is_active?(posts_path)}= link_to "Posts", posts_path
             %li{class: is_active?(edit_admin_registration_path)}= link_to "Edit Admin", edit_admin_registration_path
