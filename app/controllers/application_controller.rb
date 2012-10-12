@@ -1,7 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  # determine which layout to use
   layout :app_or_admin
+
+  # custom error handling
+  # unless Rails.env.development? || !admin_signed_in?
+    rescue_from Exception, with: lambda { |exception| render_error 500, exception }
+    rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
+  # end
 
   # overriding Devise
   def after_sign_in_path_for(resource)
@@ -31,6 +38,14 @@ class ApplicationController < ActionController::Base
 
   	return false
 
+  end
+
+  def render_error(status, exception)
+    # TO DO: Mailer to email the exception
+    respond_to do |format|
+      format.html { render template: "error/error_#{status}", layout: 'layouts/application', status: status }
+      format.all { render nothing: true, status: status }
+    end
   end
 
 end
