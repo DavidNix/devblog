@@ -7,9 +7,5 @@ class StaticPagesController < ApplicationController
 
   def products
   end
-
-  # 404 page
-  def not_found
-  end
   
 end

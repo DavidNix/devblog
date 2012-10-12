@@ -5,7 +5,6 @@ Devblog::Application.routes.draw do
   root to: 'static_pages#home'
   match 'about', to: 'static_pages#about'
   match 'products', to: 'static_pages#products'
-  match '404', to: 'static_pages#not_found', as: :not_found
   
   match 'contact', to: 'contact#new', via: :get
   match 'contact', to: 'contact#create', via: :post
