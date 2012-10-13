@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   def show
 
     @article = Post.find(params[:id])
-
+    raise ActiveRecord::RecordNotFound if @article.nil?
   	if @article.is_published?
 
       @article.increment_read_count! unless admin_signed_in?
@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
     else
       # redirect if post is not published yet
       # could happen if someone guesses the correct permalink and manually types in the URL
-  	  redirect_to "/404.html" unless admin_signed_in?
+  	  redirect_to "/404.html", unless admin_signed_in?
     end
 
   end

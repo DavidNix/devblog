@@ -24,8 +24,8 @@ Devblog::Application.routes.draw do
   get 'sitemap', to: "sitemap#index"
 
   # source: http://ramblinglabs.com/blog/2012/01/rails-3-1-adding-custom-404-and-500-error-pages
-  # unless Rails.env.development? || !admin_signed_in?
-    match '*not_found', to: 'error#error_404'
+  # unless admin_signed_in?
+  #   match '*not_found', to: 'error#error_404'
   # end
 
   # The priority is based upon order of creation:
