@@ -1,2 +1,14 @@
-%h1 Error#error_500
-%p Find me in app/views/error/error_500.html.haml
+- provide(:title, full_title('Error') )
+.row
+  .span12.error-message
+    %h1 We're sorry, but something went wrong.
+    %p We have been notified and will work to fix it quickly.
+    %p Please press the back button or try one of the links below.
+
+.row
+  .span4
+    = render "articles/recent_sidebar"
+  .span4
+    = render "articles/popular_sidebar"
+  .span4
+    =render "articles/future_sidebar"
