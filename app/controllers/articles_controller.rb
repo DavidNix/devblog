@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
     else
       # redirect if post is not published yet
       # could happen if someone guesses the correct permalink and manually types in the URL
-  	  redirect_to "/404.html", unless admin_signed_in?
+  	  render "error/error_404", status: 404 unless admin_signed_in?
     end
 
   end
