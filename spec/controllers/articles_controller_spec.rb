@@ -73,7 +73,8 @@ describe ArticlesController do
         article2 = FactoryGirl.create(:post, release_date: Time.now - 1.month, publish_ready: false)
         [article1, article2].each do |article|
           get :show, id: article
-          response.should redirect_to "/404.html"
+          response.should render_template 'error/error_404'
+          response.status.should eq(404)
         end
       end
 
