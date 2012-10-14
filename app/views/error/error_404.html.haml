@@ -1,2 +1,15 @@
-%h1 Error#error_404
-%p Find me in app/views/error/error_404.html.haml
+- provide(:title, full_title('Page Not Found') )
+.row
+  .span12.error-message
+    %h1 The page you were looking for doesn't exist.
+    %p You may have mistyped the address or the page may have moved.
+    %p You may press the back button or try one of the links below:
+
+.row
+  .span4
+    = render "articles/recent_sidebar"
+  .span4
+    = render "articles/popular_sidebar"
+  .span4
+    =render "articles/future_sidebar"
+    
