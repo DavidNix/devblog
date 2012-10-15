@@ -36,6 +36,12 @@ describe "ErrorPages" do
     end
   end
 
-  describe "Error 500"
+  # describe "Error 500" do
+  #   before do
+  #     raise Exception
+  #   end
+  #   it { should have_selector('title', text: error_500_title) }
+  #   it { should have_selector('h1', text: error_500_text) }
+  # end
 
 end
