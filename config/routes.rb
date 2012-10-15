@@ -23,13 +23,14 @@ Devblog::Application.routes.draw do
 
   get 'sitemap', to: "sitemap#index"
 
-  if Rails.env.development?
+  # to see easily in the dev environment
+  if Rails.application.config.consider_all_requests_local
     get '404', to: 'error#error_404'
     get '500', to: 'error#error_500'
   end
 
   # source: http://ramblinglabs.com/blog/2012/01/rails-3-1-adding-custom-404-and-500-error-pages
-  unless Rails.env.development?
+  unless Rails.application.config.consider_all_requests_local
     match '*not_found', to: 'error#error_404'
   end
 
