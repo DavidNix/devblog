@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   layout :app_or_admin
 
   # custom error handling
-  unless Rails.application.config.consider_all_requests_local
+  # unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: lambda { |exception| render_error 500, exception }
     rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
-  end
+  # end
 
   # overriding Devise
   def after_sign_in_path_for(resource)
