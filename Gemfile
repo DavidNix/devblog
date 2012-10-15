@@ -10,6 +10,7 @@ gem 'pg'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise'
+gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'simple_form'
@@ -25,7 +26,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
 end
 
 group :development, :test do
