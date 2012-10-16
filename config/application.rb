@@ -59,6 +59,8 @@ module Devblog
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.assets.precompile += %w(blog_admin.css)
+
     # for heroku to precompile assets when git pushes data to heroku
     # If you set config.assets.initialize_on_precompile to false, be sure to test rake assets:precompile locally before deploying. It may expose bugs where your assets reference application objects or methods, since those are still in scope in development mode regardless of the value of this flag.
     config.assets.initialize_on_precompile = false
