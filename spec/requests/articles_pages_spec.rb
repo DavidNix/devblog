@@ -8,7 +8,7 @@ describe "Articles Pages" do
 		int = devblog_rand(50) + 5
 		int.times { FactoryGirl.create(:post) }
 		# at least one has to be a current date, future date, and past date
-		FactoryGirl.create(:post, release_date: Time.now, read_count: 10 )
+		FactoryGirl.create(:post, release_date: Time.now - 1.minute, read_count: 10 )
 		FactoryGirl.create(:post, release_date: Time.now + 1.month)
 		FactoryGirl.create(:post, release_date: Time.now - 1.month)
 	end
@@ -36,9 +36,19 @@ describe "Articles Pages" do
 				Post.published_with_pagination(1).each do |article|
 					page.should have_selector('h2', text: article.title )
 					page.should have_selector('p', text: article.published_date)
-					page.should have_selector('p', text: article.teaser)
 				end
 			end
+
+			context "has markdown for teaser" do
+				FactoryGirl.create(:post, title:"Post Title", release_date: Time.now, teaser: "Teaser with a [link](http://example.com) and **strong** text.")
+				before do
+					visit articles_path
+				end
+				it { should have_selector('div.article-snippet div.heading h2', text: "Post Title") }
+				it { should have_selector('div.article-snippet div.body a', text: "link", href: "http://example.com") }
+				it { should have_selector('div.article-snippet div.body p strong', text: "strong") }
+			end
+
 		end
 
 		context "atom feed" do
