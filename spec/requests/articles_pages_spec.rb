@@ -34,7 +34,7 @@ describe "Articles Pages" do
 
 			it "lists each article" do 
 				Post.published_with_pagination(1).each do |article|
-					page.should have_selector('h3', text: article.title )
+					page.should have_selector('h2', text: article.title )
 					page.should have_selector('p', text: article.published_date)
 					page.should have_selector('p', text: article.teaser)
 				end
