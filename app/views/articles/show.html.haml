@@ -2,14 +2,14 @@
 
 .row
   .span8
-  %article.article
-    .heading
-      %h1= @article.title
-      %p <em>#{@article.published_date}</em>
+    %article.article
+      .heading
+        %h1= @article.title
+        %p <em>#{@article.published_date}</em>
 
-    .body
-      = markdown(@article.content)
-      = link_to 'Back', :back
+      .body
+        = markdown(@article.content)
+        = link_to 'Back', :back
 
   .span4
     / sidebars
