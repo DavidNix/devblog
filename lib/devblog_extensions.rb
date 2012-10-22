@@ -9,6 +9,10 @@ module DevblogExtensions
 
 	AUTHOR_NAME = "David Nix"
 
+	FEED_URL = "http://feeds.feedburner.com/"
+
+	EMAIL_FEED_URL = "http://get-feed-link"
+
 end
 
 
