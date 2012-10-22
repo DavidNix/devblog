@@ -5,6 +5,7 @@ To Do List
 * How to test error 500 pages
 * Add disqu comments and specs
 * Posts#index shows if a post has been published or not
+* Expand and collapsable menu bar.
 
 NICE TO HAVE
 * A better way for tests to switch dynamically between consider_all_local_requests
