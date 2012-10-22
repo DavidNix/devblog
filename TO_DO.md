@@ -9,3 +9,4 @@ To Do List
 * Show published flag in posts#index
 * Edit link in articles#show if admin signed in
 * Posts#index shows if a post has been published or not
+* Account for feedburner URLs
