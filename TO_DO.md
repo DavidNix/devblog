@@ -10,3 +10,4 @@ To Do List
 * Edit link in articles#show if admin signed in
 * Posts#index shows if a post has been published or not
 * Account for feedburner URLs
+* A better way for tests to switch dynamically between consider_all_local_requests
