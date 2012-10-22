@@ -8,7 +8,7 @@ describe "StaticPages" do
     before { visit root_path }
     it { should have_selector('title', text: full_title('')) }
     it { should_not have_selector 'title', text: '| Home' }
-    it { should have_xpath("//html/head/link[@href='#{articles_url}.atom']") }
+    it { should have_xpath(RSS_XPATH) }
     it { should have_xpath("//html/head/meta[@charset='utf-8']") }
     it { should have_xpath("//html/head/meta[@name='description']") }
     it { should have_xpath("//html/head/meta[@content]") }
@@ -20,6 +20,7 @@ describe "StaticPages" do
   	it { should have_selector('title', text: full_title('About')) }
   	it { should have_selector('title', text: '|') } 
     it { should have_xpath(APP_STYLESHEET_XPATH) }
+    it { should have_xpath(RSS_XPATH) }
   end
 
   describe "Products" do
@@ -27,6 +28,7 @@ describe "StaticPages" do
     it { should have_selector('title', text: full_title('Products')) }
     it { should have_selector('title', text: '|') } 
     it { should have_xpath(APP_STYLESHEET_XPATH) }
+    it { should have_xpath(RSS_XPATH) }
   end
 
 end

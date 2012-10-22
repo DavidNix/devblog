@@ -27,6 +27,7 @@ describe "Articles Pages" do
 			it { should have_selector('div.pagination') }
 			it { should have_link 'Read More' }
 			it { should have_xpath(APP_STYLESHEET_XPATH) }
+			it { should have_xpath(RSS_XPATH) }
 
 			it "does not list the unpublished article" do
 				page.should_not have_content("I'm unpublished.")
