@@ -53,7 +53,7 @@ article.article {
 
 // INDEX
 
-article.article-snippet {
+.article-snippet {
 	@include heading;
 	@include body;
 }
