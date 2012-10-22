@@ -150,6 +150,18 @@ describe "Articles Pages" do
 			end
 
 		end
+
+		context "disqus comments" do
+			let (:article) { Post.published.last }
+			before do
+				visit article_path(article)
+			end
+			it { should have_xpath("//div[@id='disqus_thread']") }
+			it { should have_content("var disqus_shortname = '#{DevblogExtensions::DISQUS_SHORTNAME}'")}
+			it { should have_content("var disqus_identifier = #{article.id}") }
+			it { should have_content("var disqus_developer = 0") }
+
+		end
 	end
 
 end
