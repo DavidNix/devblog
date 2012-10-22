@@ -6,6 +6,7 @@ To Do List
 * Add disqu comments and specs
 * Posts#index shows if a post has been published or not
 * Expand and collapsable menu bar.
+* Have the sidebars be fixed when user is scrolling.
 
 NICE TO HAVE
 * A better way for tests to switch dynamically between consider_all_local_requests
