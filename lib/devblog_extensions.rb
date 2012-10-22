@@ -13,9 +13,9 @@ end
 
 
 class Time
-	def self.random_date(years_back=5)
-			year = Time.now.year - rand(years_back)
-			month = rand(12) + 1
+	def self.random_date(index=5)
+			year = Time.now.year - rand(index)
+			month = Time.now.month - rand(index)
 			# account for 28 days in Feb, not caring about leap years
 			day = month == 2 ? rand(28) + 1 : rand(30) + 1
 			Time.local(year, month, day)
