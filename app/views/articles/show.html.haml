@@ -7,7 +7,7 @@
         %h1= @article.title
         %p <em>#{@article.published_date}</em>
         - if admin_signed_in?
-              = link_to "Edit", edit_post_path(@article)
+          = link_to "Edit", edit_post_path(@article)
 
       .body
         = markdown(@article.content)

@@ -11,16 +11,21 @@ describe "Articles Pages" do
 		FactoryGirl.create(:post, release_date: Time.now - 1.minute, read_count: 10 )
 		FactoryGirl.create(:post, release_date: Time.now + 1.month)
 		FactoryGirl.create(:post, release_date: Time.now - 1.month)
+
+		FactoryGirl.create(:post, title: "I'm unpublished.", release_date: Time.now, publish_ready: false)
+		FactoryGirl.create(:post, title: "Post Title", release_date: Time.now, teaser: "Teaser with a [link](http://example.com) and **strong** text.")
 	end
 
 	after(:all) { Post.delete_all }
 
 	describe "index" do
 		context "html" do
-			let (:unpublished_article) { FactoryGirl.create(:post, title: "I'm unpublished.", publish_ready: false) }
+			# let (:unpublished_article) { FactoryGirl.create(:post, title: "I'm unpublished.", release_date: Time.now, publish_ready: false) }
+			# let (:teaser_markdown) { FactoryGirl.create(:post, title: "Post Title", release_date: Time.now, teaser: "Teaser with a [link](http://example.com) and **strong** text.") }
 			before do
 				# visit "articles?page=#{page_num}"
 				visit articles_url
+				# save_and_open_page
 			end
 
 			it { should have_selector('title', text: full_title('Articles')) }
@@ -40,14 +45,10 @@ describe "Articles Pages" do
 				end
 			end
 
-			context "has markdown for teaser" do
-				FactoryGirl.create(:post, title:"Post Title", release_date: Time.now, teaser: "Teaser with a [link](http://example.com) and **strong** text.")
-				before do
-					visit articles_path
-				end
-				it { should have_selector('div.article-snippet div.heading h2', text: "Post Title") }
-				it { should have_selector('div.article-snippet div.body a', text: "link", href: "http://example.com") }
-				it { should have_selector('div.article-snippet div.body p strong', text: "strong") }
+			it "has markdown for teaser" do
+				page.should have_selector('div.article-snippet div.heading h2', text: "Post Title")
+			 	page.should have_selector('div.article-snippet div.body a', text: "link", href: "http://example.com")
+			 	page.should have_selector('div.article-snippet div.body p strong', text: "strong")
 			end
 
 		end
@@ -87,6 +88,7 @@ describe "Articles Pages" do
 			before do
 				visit articles_url
 				within(:css, "div#article_#{article.id}") { click_link "Read More" }
+				# save_and_open_page
 			end
 
 			it { should have_selector('title', text: full_title(article.title, true)) }
@@ -104,6 +106,7 @@ describe "Articles Pages" do
 				"# Heading 1 \n## Heading 2 \n### Heading 3 \nExample of **strong text**. \n[Example link](http://example.com)" ) }
 			before do 
 				visit article_path(article)
+				# save_and_open_page
 			end
 
 			it { should have_selector('h1', text: "Heading 1") }
