@@ -13,6 +13,8 @@ module DevblogExtensions
 
 	EMAIL_FEED_URL = "http://get-feed-link"
 
+	DISQUS_SHORTNAME = "devblog-staging"
+
 end
 
 

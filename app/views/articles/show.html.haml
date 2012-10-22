@@ -5,13 +5,20 @@
     %article.article
       .heading
         %h1= @article.title
-        %p <em>#{@article.published_date}</em>
-        - if admin_signed_in?
-          = link_to "Edit", edit_post_path(@article)
+        %p
+          %span
+            <em>#{@article.published_date}</em>
+          %span
+            by
+            = DevblogExtensions::AUTHOR_NAME
+          - if admin_signed_in?
+            = link_to "Edit", edit_post_path(@article)
 
       .body
         = markdown(@article.content)
         = link_to 'Back', :back
+        
+    = render 'comments'
 
   .span4
     / sidebars
