@@ -159,7 +159,10 @@ describe "Articles Pages" do
 			it { should have_xpath("//div[@id='disqus_thread']") }
 			it { should have_content("var disqus_shortname = '#{DevblogExtensions::DISQUS_SHORTNAME}'")}
 			it { should have_content("var disqus_identifier = #{article.id}") }
-			it { should have_content("var disqus_developer = 0") }
+			it { should have_content("var disqus_developer = 1") }
+			it { should have_content("var disqus_title = '#{article.title}'") }
+			it { should have_content("var disqus_url = '#{article_url(article)}'") }
+
 
 		end
 	end
