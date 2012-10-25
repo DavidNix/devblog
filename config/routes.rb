@@ -29,7 +29,7 @@ Devblog::Application.routes.draw do
   get 'social_icons/email', to: 'social_icons#email', as: :sm_email
 
   # to see easily in the dev environment
-  if Rails.application.config.consider_all_requests_local
+  unless Rails.application.config.consider_all_requests_local
     get '404', to: 'error#error_404'
     get '500', to: 'error#error_500'
   end
