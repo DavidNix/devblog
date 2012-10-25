@@ -9,6 +9,8 @@ module DevblogExtensions
 
 	AUTHOR_NAME = "David Nix"
 
+	TWITTER_URL = "https://twitter.com"
+
 	FEED_URL = "http://feeds.feedburner.com/"
 
 	EMAIL_FEED_URL = "http://get-feed-link"
