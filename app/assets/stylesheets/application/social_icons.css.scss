@@ -45,7 +45,7 @@
 	width: 30px;
 	height: 30px;
 
-	background-image: url(../img/sm_32_icons.png);
+	background-image: url("/assets/sm_32_icons.png");
 
 	-webkit-transition: all .1s ease-in-out;
 	-moz-transition   : all .1s ease-in-out;
@@ -58,7 +58,7 @@
 	width: 62px;
 	height: 62px;
 
-	background-image: url(../img/sm_64_icons.png);
+	background-image: url("/assets/sm_64_icons.png");
 }
 
 .sm_32_icon:hover,
