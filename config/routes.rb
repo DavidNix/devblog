@@ -24,9 +24,9 @@ Devblog::Application.routes.draw do
   get 'sitemap', to: "sitemap#index"
 
   # social icons routing
-  get 'social/twitter', to: 'social_icons#twitter', as: :sm_twitter
-  get 'social/rss', to: 'social_icons#rss', as: :sm_rss
-  get 'social/email', to: 'social_icons#email', as: :sm_email
+  get 'social_icons/twitter', to: 'social_icons#twitter', as: :sm_twitter
+  get 'social_icons/rss', to: 'social_icons#rss', as: :sm_rss
+  get 'social_icons/email', to: 'social_icons#email', as: :sm_email
 
   # to see easily in the dev environment
   if Rails.application.config.consider_all_requests_local
