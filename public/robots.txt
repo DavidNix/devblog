@@ -8,3 +8,4 @@ Disallow: /admin
 Disallow: /admin/
 Disallow: /admins/
 Disallow: /posts/
+Disallow: /social_icons/
