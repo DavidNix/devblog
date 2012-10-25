@@ -35,6 +35,7 @@ Devblog::Application.routes.draw do
   end
 
   # source: http://ramblinglabs.com/blog/2012/01/rails-3-1-adding-custom-404-and-500-error-pages
+  # the below must be the last route
   unless Rails.application.config.consider_all_requests_local
     match '*not_found', to: 'error#error_404'
   end
