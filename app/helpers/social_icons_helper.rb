@@ -14,7 +14,7 @@ module SocialIconsHelper
   def sm_icon(opts={})
       opts[:size] ||= 32
       opts[:shadow] = true unless opts[:shadow] == false
-      opts[:new_window] ||= false
+      opts[:new_window] = true unless opts[:new_window] == false
       opts[:href] ||= '#'
 
       # tooltip opts
@@ -27,9 +27,12 @@ module SocialIconsHelper
       icon_class = "sm_#{opts[:size]}_#{opts[:name]}"
       shadow_class = (opts[:shadow] == true ? "sm_shadow" : "")
 
+      target = (opts[:new_window] == true) ? "_blank" : ""
+
       content_tag(:a, 
                   content_tag(:span),
                   class: "#{base_class} #{icon_class} #{shadow_class}",
+                  target: target,
                   href: opts[:href],
                   rel: rel,
                   title: opts[:tool_title],
