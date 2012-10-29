@@ -28,6 +28,8 @@ describe "Posts pages" do
 
 		it { should have_selector('title', text: 'All Posts') }
 		it { should have_xpath(ADMIN_STYLESHEET_XPATH) }
+		it { should_not have_content(GOOGLE_ANALYTICS_CONTENT) }
+
 
 		context "pagination" do
 			it { should have_selector('div.pagination') }

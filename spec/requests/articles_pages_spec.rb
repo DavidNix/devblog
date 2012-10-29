@@ -123,6 +123,7 @@ describe "Articles Pages" do
 				visits.times { visit article_path(article) }
 			end
 
+			it { should have_content(GOOGLE_ANALYTICS_CONTENT) }
 			it "increments the read_count correctly" do
 				Post.find(article.id).read_count.should eq(visits)
 			end

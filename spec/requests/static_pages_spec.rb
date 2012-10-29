@@ -13,6 +13,7 @@ describe "StaticPages" do
     it { should have_xpath("//html/head/meta[@name='description']") }
     it { should have_xpath("//html/head/meta[@content]") }
     it { should have_xpath(APP_STYLESHEET_XPATH) }
+    it { should have_content(GOOGLE_ANALYTICS_CONTENT) }
   end
 
   describe "About page" do
@@ -21,6 +22,7 @@ describe "StaticPages" do
   	it { should have_selector('title', text: '|') } 
     it { should have_xpath(APP_STYLESHEET_XPATH) }
     it { should have_xpath(RSS_XPATH) }
+    it { should have_content(GOOGLE_ANALYTICS_CONTENT) }
   end
 
   describe "Products" do
@@ -29,6 +31,7 @@ describe "StaticPages" do
     it { should have_selector('title', text: '|') } 
     it { should have_xpath(APP_STYLESHEET_XPATH) }
     it { should have_xpath(RSS_XPATH) }
+    it { should have_content(GOOGLE_ANALYTICS_CONTENT) }
   end
 
 end
