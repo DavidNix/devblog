@@ -5,7 +5,7 @@
     %ul
       - posts.each do |article|
         %li
-          %a{rel: "tooltip", title: "Coming Soon!  Subscribe to be notified."}= article.title
+          %p <strong>#{article.title}</strong>
   - else
     %p There are no upcoming articles at this time.
 
