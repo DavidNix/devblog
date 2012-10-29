@@ -7,6 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'pg'
 gem 'thin'
+gem 'split', require: 'split/dashboard'
 
 gem 'haml-rails'
 gem 'jquery-rails'

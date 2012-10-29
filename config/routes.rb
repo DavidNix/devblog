@@ -28,6 +28,9 @@ Devblog::Application.routes.draw do
   get 'social_icons/rss', to: 'social_icons#rss', as: :sm_rss
   get 'social_icons/email', to: 'social_icons#email', as: :sm_email
 
+  # A/B Split testing
+  mount Split::Dashboard, at: 'split'
+
   # to see easily in the dev environment
   if Rails.application.config.consider_all_requests_local
     get '404', to: 'error#error_404'
