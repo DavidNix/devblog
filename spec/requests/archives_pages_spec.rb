@@ -23,7 +23,6 @@ describe "Archives Pages" do
 		it { should have_selector('title', text: full_title('Archives')) }
 		it { should have_selector('h1', text: 'Archives') }
 
-		it { should have_xpath("//li/a[@rel='tooltip']", text: "Future Post") }
 		it { should have_xpath(APP_STYLESHEET_XPATH) }
 
 		MONTH_RANGE.each do |i|
