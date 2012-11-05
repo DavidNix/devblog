@@ -6,7 +6,7 @@ Devblog is a Ruby on Rails blogging engine, written to allow precise control ove
 
 ## Features
 * 100% valid sitemap.
-* 100% valid atom feed, although the blog is designed to use Feedburner as the public feed in the <head>.  This way, you can track subscribers.
+* 100% valid atom feed, although the blog is designed to use Feedburner as the public feed in the \<head\>.  This way, you can track subscribers.
 * Contact form.
 * Different layouts for the blog admin and regular site.
 * Split Gem installed for easy A/B Split testing.
