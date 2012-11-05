@@ -16,6 +16,7 @@ Devblog is a Ruby on Rails blogging engine, written to allow precise control ove
 * Outsources blog comments to Disqus.
 * Twitter bootstrap for front end.
 * 404, 500, etc. elegant error code handling in production.
+* Google Analytics
 * Keeps track of popular blog posts.
 
 ## Setup
