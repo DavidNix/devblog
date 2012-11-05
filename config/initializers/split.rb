@@ -22,5 +22,5 @@ end
 # require password to see the dashboard
 
 Split::Dashboard.use Rack::Auth::Basic do |username, password|
-  username == 'david' && password == 'fiaJ@99absplit'
+  username == 'admin' && password == 'password'
 end
