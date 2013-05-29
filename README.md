@@ -1,3 +1,8 @@
+# NOTICE
+* This project is out of date and badly needs refactoring.
+* Refactor to Rails 4.
+* Test coverage, however, is solid.
+
 # Welcome to Devblog
 
 Tired of blogging platforms that make you use themes and plugins?
